@@ -86,8 +86,14 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.user-accounts"><i class="fa fa-user fa-fw"></i> User Accounts</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.site-config"><i class="fa fa-wrench fa-fw"></i> Site Config</a>
+            </li>
             <li ng-class="{active:collapseVar==5}">
-                <a href="" ng-click="check(5)"><i class="fa fa-camera-retro nav_icon"></i> Movies
+                <a href="" ng-click="check(5)"><i class="fa fa-camera-retro nav_icon fa-fw"></i> Movies
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=5">
@@ -100,7 +106,28 @@
                         </a>
                     </li>
                 </ul>
-
+            </li>
+            <li ng-class="{active:collapseVar==6}">
+                <a href="" ng-click="check(6)"><i class="fa fa-cogs nav_icon fa-fw"></i> Settings<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=6">
+                    <li ng-class="{active: selectedMenu=='Screen Settings'}">
+                        <a ui-sref="dashboard.screen-settings" ng-click="selectedMenu='Screen Settings'">Screen Settings</a>
+                    </li>
+                    <li ng-class="{active: selectedMenu=='Ticket Settings'}">
+                        <a ui-sref="dashboard.ticket-settings" ng-click="selectedMenu='Ticket Settings'">Ticket Settings</a>
+                    </li>
+                    <li ng-class="{active: selectedMenu=='Social Settings'}">
+                        <a ui-sref="dashboard.social-settings" ng-click="selectedMenu='Social Settings'">Social Settings</a>
+                    </li>
+                    <li ng-class="{active: selectedMenu=='Location Settings'}">
+                        <a ui-sref="dashboard.location-settings" ng-click="selectedMenu='Location Settings'">Location Settings</a>
+                    </li>
+                    <li ng-class="{active: selectedMenu=='Contact Settings'}">
+                        <a ui-sref="dashboard.contact-settings" ng-click="selectedMenu='Contact Settings'">Contact Settings</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
         </ul>
     </div>

@@ -20,7 +20,6 @@ angular
       debug:false,
       events:true
     });
-
     $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
@@ -126,11 +125,102 @@ angular
 				loadMyFile:function ($ocLazyLoad) {
 					return $ocLazyLoad.load({
 						name:'sbAdminApp',
-						files:['scripts/controllers/upcoming-movies.js']
+						files:['scripts/controllers/user-accounts.js']
 					})
 				}
 			}
 		})
+        .state('dashboard.user-accounts',{
+          templateUrl:'views/pages/user-accounts.html',
+          url:'/user-accounts',
+          controller:'UserAccountsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/upcoming-movies.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.site-config',{
+          templateUrl:'views/pages/site-config.html',
+          url:'/site-config',
+          controller:'SiteConfigCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/site-config.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.ticket-settings',{
+          templateUrl:'views/pages/ticket-settings.html',
+          url:'/ticket-settings',
+          controller:'TicketSettingsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/ticket-settings.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.social-settings',{
+          templateUrl:'views/pages/social-settings.html',
+          url:'/social-settings',
+          controller:'SocialSettingsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/social-settings.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.location-settings',{
+          templateUrl:'views/pages/location-settings.html',
+          url:'/location-settings',
+          controller:'LocationSettingsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/location-settings.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.contact-settings',{
+          templateUrl:'views/pages/contact-settings.html',
+          url:'/contact-settings',
+          controller:'ContactSettingsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/contact-settings.js']
+              })
+            }
+          }
+        })
+        .state('dashboard.screen-settings',{
+          templateUrl:'views/pages/screen-settings.html',
+          url:'/screen-settings',
+          controller:'ScreenSettingsCtrl',
+          resolve:{
+            loadMyFile:function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'sbAdminApp',
+                files:['scripts/controllers/screen-settings.js']
+              })
+            }
+          }
+        })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
         url:'/chart',
