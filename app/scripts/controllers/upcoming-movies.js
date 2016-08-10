@@ -9,9 +9,45 @@
  */
 angular.module('sbAdminApp')
   .controller('UpcomingMoviesCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+      $scope.upMovies = [{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"},{
+          movieName:"Shawshank",
+          releaseDate:"12-02-2015"}];
   });
