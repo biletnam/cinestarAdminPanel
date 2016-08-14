@@ -8,10 +8,11 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ContactSettingsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ContactSettingsCtrl', function ($scope) {
+      $scope.currentContact={
+          contactName:"Cinestar",
+          contactEmail:"cinestar@mail.com",
+          contactPhone:"879865"
+      };
+
   });

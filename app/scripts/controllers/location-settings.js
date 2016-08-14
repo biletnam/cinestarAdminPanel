@@ -8,10 +8,10 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('LocationSettingsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LocationSettingsCtrl', function ($scope) {
+    $scope.currentLocation={
+        theatreName:"Cinestar",
+        physicalAddress:"Huntsville",
+        mailingAddress:"cinestar@mail.com"
+    };
   });

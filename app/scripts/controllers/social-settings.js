@@ -8,10 +8,9 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('SocialSettingsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('SocialSettingsCtrl', function ($scope) {
+    $scope.social={
+        facebookLink:"facebook/cinestar",
+        twitterLink:"twitter/cinestar"
+    };
   });

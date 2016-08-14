@@ -121,8 +121,9 @@
                                 </th>
                                 <th><div><center>Movie Details </center></br> <div class="movieDetails">
                                     <div class="col-lg-3">Name </div>
-                                    <div class="col-lg-3">Start Time</div>
-                                    <div class="col-lg-3">End Time</div>
+                                    <div class="col-lg-2">Type</div>
+                                    <div class="col-lg-2">Start Time</div>
+                                    <div class="col-lg-2">End Time</div>
                                     <div class="col-lg-3">Actions</div>
                                 </div></div></th>
                             </tr>
@@ -133,8 +134,9 @@
                                 <td>
                                     <div ng-repeat="data in organiseScreen.details">
                                     <div class="col-lg-3"> {{data.movieName}}</div>
-                                    <div class="col-lg-3"> {{data.startTime}}</div>
-                                    <div class="col-lg-3"> {{data.endTime}}</div>
+                                    <div class="col-lg-2">{{data.type}}</div>
+                                    <div class="col-lg-2"> {{data.startTime}}</div>
+                                    <div class="col-lg-2"> {{data.endTime}}</div>
                                     <div class="col-lg-3"> 
                                     <button type="button" class="btn btn-success btn-circle"><i class="fa fa-pencil-square-o"></i>
                                     </button>
