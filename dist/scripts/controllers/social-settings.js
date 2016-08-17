@@ -1,0 +1,1 @@
+"use strict";angular.module("sbAdminApp").controller("SocialSettingsCtrl",function($scope){$scope.social={facebookLink:"facebook/cinestar",twitterLink:"twitter/cinestar"}});

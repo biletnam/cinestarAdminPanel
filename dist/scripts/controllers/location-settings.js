@@ -1,0 +1,1 @@
+"use strict";angular.module("sbAdminApp").controller("LocationSettingsCtrl",function($scope){$scope.currentLocation={theatreName:"Cinestar",physicalAddress:"Huntsville",mailingAddress:"cinestar@mail.com"}});

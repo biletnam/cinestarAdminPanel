@@ -1,0 +1,1 @@
+"use strict";angular.module("sbAdminApp").controller("UserAccountsCtrl",function(){this.awesomeThings=["HTML5 Boilerplate","AngularJS","Karma"]});
