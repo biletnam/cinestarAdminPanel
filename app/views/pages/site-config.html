@@ -18,11 +18,15 @@
 					<div class="col-md-6 current-site-config"><h5><b>Website URL</b></h5></div>
 					<div class="col-md-6 "><h5>{{siteConfig.websiteUrl}}</h5></div>
 					<div class="col-md-6 current-site-config"><h5><b>Time Zone</b></h5></div>
-					<div class="col-md-6 "><h5>{{siteConfig.timeZone}}</h5></div>
-					<div class="col-md-12" ng-repeat="oct in openCloseTime">
+                    <div class="col-md-6 "><h5>{{siteConfig.timeZone}}</h5></div>
+                    <div class="col-md-offset-6">
+                        <div class="col-md-3 "><h5><b>Open Time</b></h5></div>
+                        <div class="col-md-offset-2 col-md-3 "><h5><b>Close Time</b></h5></div>
+                    </div>
+                    <div class="col-md-12" ng-repeat="oct in openCloseTime">
 						<div class="col-md-6 current-site-config" ng-repeat="(key, val) in oct"><h5><b>{{key}}</b></h5></div>
-						<div class="col-md-3" ng-repeat="(key, val) in oct"><h5>{{val[0]}} hrs</h5></div>
-						<div class="col-md-3" ng-repeat="(key, val) in oct"><h5>{{val[1]}} hrs</h5></div>
+                        <div class="col-md-3" ng-repeat="(key, val) in oct"><h5>{{val[0]}} </h5></div>
+						<div class="col-md-3" ng-repeat="(key, val) in oct"><h5>{{val[1]}} </h5></div>
 					</div>
 				</div>
 			</div>
@@ -52,7 +56,7 @@
 							<div class="col-sm-8">
 								<div class="input-group">
 										<span class="input-group-addon">
-											<i class="fa fa-key"></i>
+											<i class="fa fa-globe"></i>
 										</span>
 									<input type="text" class="form-control" id="websiteURL"
 										   placeholder="Website" required="">

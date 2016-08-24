@@ -23,5 +23,5 @@ angular.module('sbAdminApp')
       {   Friday:["9:00","18:00"]},
       {   Saturday:["9:00","21:00"]},
       {   Sunday:["9:00","22:00"]}
-      ]
+      ];
   });
