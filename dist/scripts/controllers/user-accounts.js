@@ -1,1 +1,1 @@
-"use strict";angular.module("sbAdminApp").controller("UserAccountsCtrl",function(){this.awesomeThings=["HTML5 Boilerplate","AngularJS","Karma"]});
+"use strict";angular.module("sbAdminApp").controller("UserAccountsCtrl",function($scope){$scope.userAccounts={username:"Cinestar User",email:"cinestar@cinestar.com",password:"cinestar"}});
