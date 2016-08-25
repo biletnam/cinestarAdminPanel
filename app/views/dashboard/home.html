@@ -11,36 +11,49 @@
         <stats number="12" comments="Users Registered!" colour="green" type="user"></stats>
         <stats number="18" comments="Total Tickets Sold!" colour="red" type="ticket"></stats>
     </div>
-    
-    <!-- /.panel -->
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                </div>
-                <!-- /.panel-heading -->
-                <timeline></timeline>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                </div>
-                <!-- /.panel-heading -->
-                <notifications></notifications> 
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
 
-            <chat></chat>
-             <!-- /.panel .chat-panel -->
+    <!--Chart-->
+    <div class="row">
+        <div class="col-lg-12 col-sm-12" id="line-chart" ng-controller="MainCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading">Tickets Sold per Interval</div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                            click="line.onClick" series="line.series"></canvas>
+                </div>
+            </div>
         </div>
-        <!-- /.col-lg-4 -->
     </div>
+    <!--End Chart-->
+    <!-- /.panel -->
+    <!--<div class="row">-->
+        <!--<div class="col-lg-8">-->
+            <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading">-->
+                    <!--<i class="fa fa-clock-o fa-fw"></i> Responsive Timeline-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                <!--<timeline></timeline>-->
+                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.panel &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.col-lg-8 &ndash;&gt;-->
+        <!--<div class="col-lg-4">-->
+            <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading">-->
+                    <!--<i class="fa fa-bell fa-fw"></i> Notifications Panel-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                <!--<notifications></notifications> -->
+                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.panel &ndash;&gt;-->
+
+            <!--<chat></chat>-->
+             <!--&lt;!&ndash; /.panel .chat-panel &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
+    <!--</div>-->
     <!-- /.row -->
 </div>

@@ -36,7 +36,7 @@ angular
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
-                    ]
+					]
                 }),
                 $ocLazyLoad.load(
                 {
@@ -49,17 +49,17 @@ angular
                 {
                   name:'ngAnimate',
                   files:['bower_components/angular-animate/angular-animate.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngCookies',
                   files:['bower_components/angular-cookies/angular-cookies.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngResource',
                   files:['bower_components/angular-resource/angular-resource.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngSanitize',
@@ -77,20 +77,24 @@ angular
         url:'/home',
         controller: 'MainCtrl',
         templateUrl:'views/dashboard/home.html',
-        resolve: {
-          loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'sbAdminApp',
-              files:[
-              'scripts/controllers/main.js',
-              'scripts/directives/timeline/timeline.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'
-              ]
-            })
-          }
-        }
+		resolve: {
+		  loadMyFile:function($ocLazyLoad) {
+			  return $ocLazyLoad.load({
+				  name:'chart.js',
+				  files:[
+					  'bower_components/angular-chart.js/dist/angular-chart.min.js',
+					  'bower_components/angular-chart.js/dist/angular-chart.css'
+				  ]
+			  }),$ocLazyLoad.load({
+					  name:'sbAdminApp',
+					  files:['scripts/controllers/main.js',
+						  'scripts/directives/timeline/timeline.js',
+						  'scripts/directives/notifications/notifications.js',
+						  'scripts/directives/chat/chat.js',
+						  'scripts/directives/dashboard/stats/stats.js']
+				  })
+		  }
+		}
       })
       .state('dashboard.form',{
         templateUrl:'views/form.html',
