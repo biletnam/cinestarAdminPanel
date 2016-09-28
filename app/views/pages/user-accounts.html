@@ -13,12 +13,12 @@
                     Current User Details
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-6 current-user-accounts"><h5><b>User Name</b></h5></div>
-                    <div class="col-md-6 "><h5>{{userAccounts.username}}</h5></div>
-                    <div class="col-md-6 current-user-accounts"><h5><b>Email </b></h5></div>
-                    <div class="col-md-6 "><h5>{{userAccounts.email}}</h5></div>
-                    <div class="col-md-6 current-user-accounts"><h5><b>Password</b></h5></div>
-                    <div class="col-md-6 "><h5>{{userAccounts.password}}</h5></div>
+                    <div class="col-md-4 current-user-accounts"><h5><b>User Name</b></h5></div>
+                    <div class="col-md-8 "><h5>{{userAccounts.username}}</h5></div>
+                    <div class="col-md-4 current-user-accounts"><h5><b>Email </b></h5></div>
+                    <div class="col-md-8 "><h5>{{userAccounts.email}}</h5></div>
+                    <div class="col-md-4 current-user-accounts"><h5><b>Password</b></h5></div>
+                    <div class="col-md-8 "><h4>***********</h4></div>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 											<i class="fa fa-user"></i>
 										</span>
                                     <input type="text" class="form-control" id="userName"
-                                           placeholder="User Name" required="">
+                                           placeholder="User Name" VALUE="{{userAccounts.username}}" required="" disabled>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
 											<i class="fa fa-envelope"></i>
 										</span>
                                     <input type="email" class="form-control" id="userEmail"
-                                           placeholder="Email" required="">
+                                           placeholder="Email" value="{{userAccounts.email}}" required="" disabled>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
 											<i class="fa fa-key"></i>
 										</span>
                                     <input type="password" class="form-control" id="newPassword"
-                                           placeholder="New Password" required="">
+                                           placeholder="New Password" ng-model="newPassword" required="">
                                 </div>
                             </div>
                         </div>
@@ -74,13 +74,13 @@
 											<i class="fa fa-key"></i>
 										</span>
                                     <input type="password" class="form-control" id="confirmPassword"
-                                           placeholder="Confirm Password" required="">
+                                           placeholder="Confirm Password"  ng-model="confirmPassword" required="">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                <button class="btn-success btn">Update</button>
+                                <button class="btn-success btn" ng-click="updateDetails()">Update</button>
                             </div>
                         </div>
                     </form>

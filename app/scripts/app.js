@@ -15,7 +15,7 @@ angular
     'angular-loading-bar',
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
-    
+
     $ocLazyLoadProvider.config({
       debug:false,
       events:true
@@ -108,7 +108,7 @@ angular
         templateUrl:'views/pages/login.html',
         url:'/login'
     })
-	.state('dashboard.currentMovies',{
+	    .state('dashboard.currentMovies',{
 		templateUrl:'views/pages/current-movies.html',
 		url:'/current-movies',
 		controller:'currentMoviesController',
@@ -129,7 +129,7 @@ angular
 				loadMyFile:function ($ocLazyLoad) {
 					return $ocLazyLoad.load({
 						name:'sbAdminApp',
-						files:['scripts/controllers/user-accounts.js']
+						files:['scripts/controllers/upcoming-movies.js']
 					})
 				}
 			}
@@ -139,12 +139,14 @@ angular
           url:'/user-accounts',
           controller:'UserAccountsCtrl',
           resolve:{
-            loadMyFile:function ($ocLazyLoad) {
-              return $ocLazyLoad.load({
-                name:'sbAdminApp',
-                files:['scripts/controllers/upcoming-movies.js']
-              })
-            }
+			  loadMyFile:function ($ocLazyLoad) {
+			  return $ocLazyLoad.load({
+				name:'sbAdminApp',
+				files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/user-accounts.js']
+			  })
+			}
           }
         })
         .state('dashboard.site-config',{
