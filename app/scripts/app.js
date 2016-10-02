@@ -170,7 +170,9 @@ angular
             loadMyFile:function ($ocLazyLoad) {
               return $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/ticket-settings.js']
+                files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/ticket-settings.js']
               })
             }
           }
@@ -220,19 +222,21 @@ angular
             }
           }
         })
-        .state('dashboard.screen-settings',{
-          templateUrl:'views/pages/screen-settings.html',
-          url:'/screen-settings',
-          controller:'ScreenSettingsCtrl',
-          resolve:{
-            loadMyFile:function ($ocLazyLoad) {
-              return $ocLazyLoad.load({
-                name:'sbAdminApp',
-                files:['scripts/controllers/screen-settings.js']
-              })
-            }
-          }
-        })
+		.state('dashboard.screen-settings',{
+		  templateUrl:'views/pages/screen-settings.html',
+		  url:'/screen-settings',
+		  controller:'ScreenSettingsCtrl',
+		  resolve:{
+			loadMyFile:function ($ocLazyLoad) {
+			  return $ocLazyLoad.load({
+				name:'sbAdminApp',
+				files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/screen-settings.js']
+			  })
+			}
+		  }
+		})
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
         url:'/chart',

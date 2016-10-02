@@ -20,15 +20,15 @@
 								<label for="ticketName" class="col-sm-2 control-label hor-form">Ticket Name</label>
 								<div class="col-sm-10"> <div class="input-group"><span class="input-group-addon">	<i class="fa fa-ticket"></i>
 									</span>
-									<input type="text" class="form-control" id="ticketName" placeholder="Ticket Name" required=""></div>
+									<input type="text" class="form-control" id="ticketName" ng-model="adminTicket.ticketName" placeholder="Ticket Name" required=""></div>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="ticketType" class="col-sm-2 control-label">Ticket Type</label>
 								<div class="col-sm-10" id="ticketType">
-									<span class="radio-inline"><input type="radio" name="gender" value="male"> 2D</span>
-									<span class="radio-inline"><input type="radio" name="gender" value="female">3D</span>
+									<span class="radio-inline"><input type="radio" name="gender" data-ng-model="adminTicket.ticketType" value="2D"> 2D</span>
+									<span class="radio-inline"><input type="radio" name="gender" data-ng-model="adminTicket.ticketType" value="3D" >3D</span>
 								</div>
 							</div>
 
@@ -36,29 +36,30 @@
 								<label for="ticketPrice" class="col-sm-2 control-label hor-form">Ticket Price</label>
 								<div class="col-sm-10"> <div class="input-group"><span class="input-group-addon">	<i class="fa fa-money"></i>
 									</span>
-									<input type="text" class="form-control" id="ticketPrice" placeholder="Ticket Price" required=""></div>
+									<input type="text" class="form-control" id="ticketPrice" placeholder="Ticket Price"
+										   ng-model="adminTicket.ticketPrice" required=""></div>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="ticketGroup" class="col-sm-2 control-label">Ticket Group</label>
 								<div class="col-sm-10" id="ticketGroup">
-									<span class="radio-inline"><input type="radio" name="gender" value="male"> Kids</span>
-									<span class="radio-inline"><input type="radio" name="gender" value="female">Adults</span>
-									<span class="radio-inline"><input type="radio" name="gender" value="other">Senior</span>
+									<span class="radio-inline"><input type="radio" name="ticketGroup" data-ng-model="adminTicket.ticketGroup" value="Kids"> Kids</span>
+									<span class="radio-inline"><input type="radio" name="ticketGroup" data-ng-model="adminTicket.ticketGroup" value="Adults">Adults</span>
+									<span class="radio-inline"><input type="radio" name="ticketGroup" data-ng-model="adminTicket.ticketGroup" value="Senior">Senior</span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="day" class="col-sm-2 control-label">Day</label>
 								<div class="col-sm-10">
-									<select class="form-control " title="Option Types" id="day">
+									<select class="form-control " title="Option Types"  ng-model="adminTicket.ticketDay" id="day">
 										<option ng-repeat="day in days">{{day}}</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<button type="submit" ng-click="updateDetails()" class="btn btn-primary">Update</button>
 								</div>
 							</div>
 						</form>
@@ -69,7 +70,6 @@
 			</div>
 			<!-- /.panel -->
 		</div>
-		<!-- /.col-lg-12 -->
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
@@ -87,11 +87,11 @@
 									<div><center>Day </center></br></div>
 								</th>
 								<th><div><center>Ticket Details </center></br> <div class="movieDetails">
-									<div class="col-lg-2">Ticket Group </div>
+									<div class="col-lg-3">Ticket Group </div>
 									<div class="col-lg-3">Ticket Name </div>
-									<div class="col-lg-2">2D Price</div>
-									<div class="col-lg-2">3D Price</div>
-									<div class="col-lg-3">Actions</div>
+									<div class="col-lg-3">2D Price</div>
+									<div class="col-lg-3">3D Price</div>
+									<!--<div class="col-lg-3">Actions</div>-->
 								</div></div></th>
 							</tr>
 							</thead>
@@ -100,16 +100,16 @@
 								<td><center>{{ticket.day}}</center></td>
 								<td>
 									<div ng-repeat="ticketDetail in ticket.ticketDetails">
-										<div class="col-lg-2"> {{ticketDetail.ticketGroup}}</div>
+										<div class="col-lg-3"> {{ticketDetail.ticketGroup}}</div>
 										<div class="col-lg-3">{{ticketDetail.ticketName}}</div>
-										<div class="col-lg-2"> {{ticketDetail.ticketPrice2D}}</div>
-										<div class="col-lg-2"> {{ticketDetail.ticketPrice3D}}</div>
-										<div class="col-lg-3">
-											<button type="button" class="btn btn-success btn-circle"><i class="fa fa-pencil-square-o"></i>
-											</button>
-											<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i>
-											</button>
-										</div>
+										<div class="col-lg-3"> {{ticketDetail.ticketPrice2D}}</div>
+										<div class="col-lg-3"> {{ticketDetail.ticketPrice3D}}</div>
+										<!--<div class="col-lg-3">-->
+											<!--<button type="button" class="btn btn-success btn-block"><i class="fa fa-pencil-square-o"></i>-->
+											<!--</button>-->
+											<!--<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i>-->
+											<!--</button>-->
+										<!--</div>-->
 									</div>
 								</td>
 							</tr>

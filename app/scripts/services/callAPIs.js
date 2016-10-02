@@ -84,4 +84,52 @@ angular.module('sbAdminApp')
 				});
 			}
 		}
-	});
+	})
+	.factory('admin_ticket_settings', function ($q, $http, apiKey) {
+		return{
+			getAdminTicket: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/setting/ticket-setting").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			updateAdminTicket: function (data) {
+				return $http.put(""+apiKey.apiUrlFn()+"db/admin/setting/ticket-setting", data).
+				success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
+		}
+	})
+	.factory('admin_screen_settings', function ($q, $http, apiKey) {
+	return{
+		postAdminScreen: function(data){
+			return $http.post("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting", data).
+			success(function (data) {
+				return data;
+			}).error(function(data){
+				return data;
+			});
+		},
+		getAdminScreen: function(){
+			return $http.get("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting").
+			success(function (data) {
+				return data;
+			}).error(function(data){
+				return data;
+			});
+		},
+		updateAdminScreen: function (data) {
+			return $http.put(""+apiKey.apiUrlFn()+"db/admin/setting/screen-setting", data).
+			success(function(data){
+				return data;
+			}).error(function(data){
+				return data;
+			});
+		}
+	}
+});
