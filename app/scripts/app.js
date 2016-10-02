@@ -183,7 +183,9 @@ angular
             loadMyFile:function ($ocLazyLoad) {
               return $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/social-settings.js']
+                files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/social-settings.js']
               })
             }
           }
@@ -196,7 +198,9 @@ angular
             loadMyFile:function ($ocLazyLoad) {
               return $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/location-settings.js']
+                files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/location-settings.js']
               })
             }
           }
@@ -209,7 +213,9 @@ angular
             loadMyFile:function ($ocLazyLoad) {
               return $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/contact-settings.js']
+                files:['scripts/services/apiKey.js',
+					'scripts/services/callAPIs.js',
+					'scripts/controllers/contact-settings.js']
               })
             }
           }

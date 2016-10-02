@@ -15,11 +15,11 @@
 				<!-- /.panel-heading -->
 				<div class="panel-body">
                     <div class="col-md-6"><h5><b>Theatre Name</b></h5></div>
-                    <div class="col-md-6"><h5>{{currentLocation.theatreName}}</h5></div>
+                    <div class="col-md-6"><h5>{{currentLocation.locationTheatreName}}</h5></div>
                     <div class="col-md-6"><h5><b>Physical Address</b></h5></div>
-                    <div class="col-md-6"><h5>{{currentLocation.physicalAddress}}</h5></div>
+                    <div class="col-md-6"><h5>{{currentLocation.locationPhysicalAddress}}</h5></div>
                     <div class="col-md-6"><h5><b>Mailing Address</b></h5></div>
-                    <div class="col-md-6"><h5>{{currentLocation.mailingAddress}}</h5></div>
+                    <div class="col-md-6"><h5>{{currentLocation.locationMailingAddress}}</h5></div>
                 </div>
 				<!-- /.panel-body -->
 			</div>
@@ -38,7 +38,7 @@
                             <label for="theatreName" class="col-md-3 control-label hor-form">Theatre Name</label>
                             <div class="col-md-9"> <div class="input-group"><span class="input-group-addon">	<i class="fa fa-camera-retro"></i>
 									</span>
-                                <input type="text" class="form-control" id="theatreName" placeholder="Theatre Name" required=""></div>
+                                <input type="text" class="form-control" id="theatreName" placeholder="Theatre Name" ng-model="adminLocation.locationTheatreName" required=""></div>
                             </div>
                         </div>
 
@@ -46,7 +46,7 @@
                             <label for="physicalAddress" class="col-md-3 control-label hor-form">Physical Address</label>
                             <div class="col-md-9"> <div class="input-group"><span class="input-group-addon">	<i class="fa fa-map-marker "></i>
 									</span>
-                                <input type="text" class="form-control" id="physicalAddress" placeholder="Physical Address" required=""></div>
+                                <input type="text" class="form-control" id="physicalAddress" placeholder="Physical Address" ng-model="adminLocation.locationPhysicalAddress" required=""></div>
                             </div>
                         </div>
 
@@ -54,14 +54,14 @@
                             <label for="mailingAddress" class="col-md-3 control-label hor-form">Mailing Address</label>
                             <div class="col-md-9"> <div class="input-group"><span class="input-group-addon">	<i class="fa fa-envelope"></i>
 									</span>
-                                <input type="email" class="form-control" id="mailingAddress" placeholder="Mailing Address" required=""></div>
+                                <input type="email" class="form-control" id="mailingAddress" placeholder="Mailing Address" ng-model="adminLocation.locationMailingAddress" required=""></div>
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" ng-click="updateDetails()" class="btn btn-success">Update</button>
                             </div>
                         </div>
                     </form>

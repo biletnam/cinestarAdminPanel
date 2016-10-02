@@ -15,9 +15,9 @@
 				<!-- /.panel-heading -->
 				<div class="panel-body">
 					<div class="col-md-6"><h5><b>Facebook URL</b></h5></div>
-					<div class="col-md-6"><h5>{{social.facebookLink}}</h5></div>
+					<div class="col-md-6"><h5>{{currentSocial.socialFacebook}}</h5></div>
 					<div class="col-md-6"><h5><b>Twitter URL</b></h5></div>
-					<div class="col-md-6"><h5>{{social.twitterLink}}</h5></div>
+					<div class="col-md-6"><h5>{{currentSocial.socialTwitter}}</h5></div>
 				</div>
 				<!-- /.panel-body -->
 			</div>
@@ -37,7 +37,7 @@
 							<div class="col-md-9"> <div class="input-group"><span class="input-group-addon">
                                 <i class="fa fa-facebook-square"></i>
 									</span>
-								<input type="text" class="form-control" id="facebookUrl" placeholder="Facebook URL" required=""></div>
+								<input type="text" class="form-control" ng-model="adminSocial.socialFacebook" id="facebookUrl" placeholder="Facebook URL" required=""></div>
 							</div>
 						</div>
 
@@ -46,13 +46,13 @@
 							<div class="col-md-9"> <div class="input-group"><span class="input-group-addon">
                                 <i class="fa fa-twitter-square "></i>
 									</span>
-								<input type="text" class="form-control" id="twitterUrl" placeholder="Twitter URL" required=""></div>
+								<input type="text" class="form-control" ng-model="adminSocial.socialTwitter" id="twitterUrl" placeholder="Twitter URL" required=""></div>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-md-offset-3 col-md-9">
-								<button type="submit" class="btn btn-success">Submit</button>
+								<button type="submit" ng-click="updateDetails()" class="btn btn-success">Submit</button>
 							</div>
 						</div>
 					</form>

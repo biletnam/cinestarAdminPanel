@@ -16,9 +16,8 @@ angular.module('sbAdminApp')
 			  username:result.adminUserName,
 			  email:result.adminUserEmail
 		  };
-		  console.log(result);
-		  console.log(data);
-
+		  // console.log(result);
+		  // console.log(data);
 	  });
 	  $scope.updateDetails = function updateDetails(){
 		  $scope.updateData={
