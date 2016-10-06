@@ -47,7 +47,7 @@
 											<i class="fa fa-envelope-o"></i>
 										</span>
 									<input type="text" class="form-control" id="theatreName"
-										   placeholder="Theatre Name" required="">
+										   placeholder="Theatre Name" ng-model="updateSiteConfig.theatreName" required="">
 								</div>
 							</div>
 						</div>
@@ -59,28 +59,28 @@
 											<i class="fa fa-globe"></i>
 										</span>
 									<input type="text" class="form-control" id="websiteURL"
-										   placeholder="Website" required="">
+										   placeholder="Website" ng-model="updateSiteConfig.websiteUrl" required="">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="day" class="col-sm-4 control-label">Time Zone</label>
 							<div class="col-sm-8">
-								<select class="form-control " title="Option Types" id="day">
-									<option ng-repeat="day in days">{{day}}</option>
+								<select class="form-control " title="Option Types" id="day" ng-model="updateSiteConfig.timeZone">
+									<option ng-repeat="day in timeZone">{{day}}</option>
 								</select>
 							</div>
 						</div>
 						<form class="form-horizontal">
-							<div class="form-group"  ng-repeat="day in daysInWeek">
-								<label class="control-label col-sm-4" for="{{day}}Timing">{{day}}</label>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="MondayTiming">Monday</label>
 								<div class="col-sm-4">
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="fa fa-clock-o" ></i>
 										</span>
-										<input type="text" class="form-control" id="{{day}}Timing"
-											   placeholder="Open Time" required="">
+										<input type="text" class="form-control" ng-model="Monday.openTime" id="MondayTiming"
+											   placeholder="Open Time"  required="">
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -88,7 +88,144 @@
 										<span class="input-group-addon">
 											<i class="fa fa-clock-o" ></i>
 										</span>
-										<input type="text" class="form-control" id="cleanTime"
+										<input type="text" class="form-control" ng-model="Monday.closeTime" id="cleanTime"
+											   placeholder="Close Time" required="">
+									</div>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="TuesdayTiming">Tuesday</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<span class="input-group-addon">
+										  <i class="fa fa-clock-o" ></i>
+										</span>
+										<input type="text" class="form-control" ng-model="Tuesday.openTime" id="TuesdayTiming"
+											   placeholder="Open Time"  required="">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="input-group">
+										<span class="input-group-addon">
+										  <i class="fa fa-clock-o" ></i>
+										</span>
+										<input type="text" class="form-control" ng-model="Tuesday.closeTime" id="TuesdayCleanTime"
+											   placeholder="Close Time" required="">
+									</div>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="WednesdayTiming">Wednesday</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Wednesday.openTime" id="WednesdayTiming"
+											   placeholder="Open Time"  required="">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Wednesday.closeTime" id="WednesdayCleanTime"
+											   placeholder="Close Time" required="">
+									</div>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="ThursdayTiming">Thursday</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Thursday.openTime" id="ThursdayTiming"
+											   placeholder="Open Time"  required="">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Thursday.closeTime" id="ThursdayCleanTime"
+											   placeholder="Close Time" required="">
+									</div>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="FridayTiming">Friday</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Friday.openTime" id="FridayTiming"
+											   placeholder="Open Time"  required="">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Friday.closeTime" id="FridayCleanTime"
+											   placeholder="Close Time" required="">
+									</div>
+								</div>
+							</div>
+						</form>            <form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="SaturdayTiming">Saturday</label>
+							<div class="col-sm-4">
+								<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+									<input type="text" class="form-control" ng-model="Saturday.openTime" id="SaturdayTiming"
+										   placeholder="Open Time"  required="">
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+									<input type="text" class="form-control" ng-model="Saturday.closeTime" id="SaturdayCleanTime"
+										   placeholder="Close Time" required="">
+								</div>
+							</div>
+						</div>
+					</form>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="SundayTiming">Sunday</label>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Sunday.openTime" id="SundayTiming"
+											   placeholder="Open Time"  required="">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-clock-o" ></i>
+                    </span>
+										<input type="text" class="form-control" ng-model="Sunday.closeTime" id="SundayCleanTime"
 											   placeholder="Close Time" required="">
 									</div>
 								</div>
@@ -96,7 +233,7 @@
 						</form>
 						<div class="form-group">
 							<div class="col-md-offset-4 col-md-8">
-								<button class="btn-success btn">Submit</button>
+								<button class="btn-success btn" ng-click="updateDetails()">Submit</button>
 								<button class="btn-danger btn">Cancel</button>
 								<button class="btn-primary btn">Reset</button>
 							</div>

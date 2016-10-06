@@ -106,30 +106,50 @@ angular.module('sbAdminApp')
 		}
 	})
 	.factory('admin_screen_settings', function ($q, $http, apiKey) {
-	return{
-		postAdminScreen: function(data){
-			return $http.post("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting", data).
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
-		},
-		getAdminScreen: function(){
-			return $http.get("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting").
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
-		},
-		updateAdminScreen: function (data) {
-			return $http.put(""+apiKey.apiUrlFn()+"db/admin/setting/screen-setting", data).
-			success(function(data){
-				return data;
-			}).error(function(data){
-				return data;
-			});
+		return{
+			postAdminScreen: function(data){
+				return $http.post("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting", data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			getAdminScreen: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/setting/screen-setting").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			updateAdminScreen: function (data) {
+				return $http.put(""+apiKey.apiUrlFn()+"db/admin/setting/screen-setting", data).
+				success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
 		}
-	}
-});
+	})
+	.factory('admin_site_config', function ($q, $http, apiKey) {
+		return{
+			getAdminSiteConfig: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/setting/site-config").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			updateAdminSiteConfig: function (data) {
+				return $http.put(""+apiKey.apiUrlFn()+"db/admin/setting/site-config", data).
+				success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
+		}
+	});
