@@ -155,6 +155,22 @@ angular.module('sbAdminApp')
 	})
 	.factory('admin_upcoming_movies', function ($q, $http, apiKey) {
 		return{
+			getAddedMovies: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/added-upcoming-movies").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			getQuickRecommendations: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/recommended-upcoming-movies").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
 			getAdminUpcomingMovies: function(movieName){
 				return $http.get("" + apiKey.apiUrlFn() + "db/admin/search-upcoming-movies/"+movieName).
 				success(function (data) {
@@ -164,7 +180,7 @@ angular.module('sbAdminApp')
 				});
 			},
 			updateAdminUpcomingMovies: function (data) {
-				return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/", data).
+				return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/"+data).
 				success(function(data){
 					return data;
 				}).error(function(data){

@@ -22,12 +22,14 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-film"></i>
                                     </span>
-                                    <input  list="movieName" ng-change="showMovieSuggestions(typedMovie)" ng-model="typedMovie" class="form-control" name="browser">
-                                    <datalist id="movieName" >
-                                        <option ng-repeat="movie  in searchedMovie track by $index ">{{movie}}</option>
+                                    <input list="movieName" class="form-control"
+                                           placeholder="Movie Name (Type to search)"
+                                           ng-model="typedMovie"
+                                           ng-change="showMovieSuggestions(typedMovie)"
+                                           required="" >
+                                    <datalist id="movieName">
+                                        <option ng-repeat="movie in searchedMovie track by $index ">{{movie.upMovieName}}</option>
                                     </datalist>
-                                    <!--<input type="text" class="form-control" id="movieName" bs3-typeahead bs3-source="searchedMovie" ng-model="typedMovie"-->
-                                           <!--placeholder="Movie Name (Type to search)" ng-change="showMovieSuggestions(typedMovie)" required="">-->
 
                                 </div>
                             </div>
@@ -40,14 +42,14 @@
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="text" class="form-control" id="movieLength"
-                                           placeholder="Displayed automatically"
+                                           placeholder="Displayed automatically" ng-model="upReleaseDateMovie[0].upReleaseDate"
                                            required="" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" ng-click="updateMovie()" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -68,18 +70,22 @@
                         <table class="table table-hover table-fixed qrScroll " >
                             <thead>
                             <tr>
-                                <th class="col-md-4">Movie Name</th>
-                                <th class="col-md-4">Release Date</th>
-                                <th class="col-md-4">Actions</th>
+                                <th class="col-md-8">Movie Name</th>
+                                <th class="col-md-2">Release Date</th>
+                                <th class="col-md-2">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="upMovie in upMovies">
-                                <td class="col-md-4">{{upMovie.movieName}}</td>
-                                <td class="col-md-4">{{upMovie.releaseDate}}</td>
-                                <td class="col-md-4">
-                                    <button type="button" class="btn btn-success btn-sm">Add</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                            <tr ng-repeat="upMovie in quickRecommendations">
+                                <td class="col-md-8">{{upMovie.upMovieName}}</td>
+                                <td class="col-md-2">{{upMovie.upReleaseDate}}</td>
+                                <td class="col-md-2">
+                                    <button type="button" class="btn btn-success btn-sm" ng-click="updatedMovie(upMovie.upMovieId)">
+                                        <i class="fa fa-plus-circle fa-2" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-minus-circle fa-2" aria-hidden="true"></i>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -114,12 +120,39 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="upMovie in upMovies">
-                                    <td class="col-md-3">{{upMovie.movieName}}</td>
-                                    <td class="col-md-3">{{upMovie.releaseDate}}</td>
-                                    <td class="col-md-3">Image</td>
+                                <tr ng-repeat="upMovie in addedMoviesList track by $index">
+                                    <td class="col-md-3">{{upMovie.upMovieName}}</td>
+                                    <td class="col-md-3">{{upMovie.upReleaseDate}}</td>
+                                    <td class="col-md-3 img-hover">
+                                        <img
+                                             alt="{{upMovie.upMovieName}}"
+                                             ng-src="{{upMovie.upPosterPath}}"
+                                             ng-click="clickedMovie($index)"
+                                             class="img-responsive img-rounded" style="width:30px;height:30px;">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                            <div class="modal-dialog">
+                                                <center>
+                                                    <img alt="{{showClickedMovie.upMovieName}}"
+                                                         ng-src="{{showClickedMovie.upPosterPath}}"
+                                                         class="img-responsive img-rounded" style="width: 250px;height: 380px;">
+                                                </center>
+                                            </div>
+                                            <div class="center-block">
+                                                <center>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button class="fileUpload btn btn-primary">
+                                                        <span>Upload</span>
+                                                        <input type="file" class="upload" onchange="angular.element(this).scope().uploadFile(this.files)" /></button>
+                                                </center>
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+
+                                    </td>
                                     <td class="col-md-3">
-                                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                        <button type="button"  ng-click="clickedMovie($index)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
                                         <button type="button" class="btn btn-danger btn-sm">Remove</button>
                                     </td>
                                 </tr>
@@ -137,3 +170,48 @@
         <!-- /.col-lg-12 -->
     </div>
 </div>
+
+<!--<style type="text/css">-->
+    <!--.img-hover img {-->
+        <!-- -webkit-transition: all .3s ease; /* Safari and Chrome */-->
+        <!-- -moz-transition: all .3s ease; /* Firefox */-->
+        <!-- -o-transition: all .3s ease; /* IE 9 */-->
+        <!-- -ms-transition: all .3s ease; /* Opera */-->
+        <!--transition: all .3s ease;-->
+    <!--}-->
+    <!--.img-hover img:hover {-->
+        <!-- -webkit-backface-visibility: hidden;-->
+        <!--backface-visibility: hidden;-->
+        <!-- -webkit-transform:translateZ(0) scale(10.20); /* Safari and Chrome */-->
+        <!-- -moz-transform:scale(1.20); /* Firefox */-->
+        <!-- -ms-transform:scale(1.20); /* IE 9 */-->
+        <!-- -o-transform:translatZ(0) scale(1.20); /* Opera */-->
+        <!--transform:translatZ(0) scale(1.20);-->
+        <!--z-index: 999;-->
+    <!--}-->
+
+
+    <!--.grayscale {-->
+        <!-- -webkit-filter: brightness(1.10) grayscale(100%) contrast(90%);-->
+        <!-- -moz-filter: brightness(1.10) grayscale(100%) contrast(90%);-->
+        <!--filter: brightness(1.10) grayscale(100%);-->
+    <!--}-->
+<!--</style>-->
+<style type="text/css">
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+    }
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+</style>
