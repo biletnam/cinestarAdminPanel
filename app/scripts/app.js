@@ -12,7 +12,7 @@ angular
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
-    'angular-loading-bar',
+    'angular-loading-bar'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
 
@@ -129,7 +129,9 @@ angular
 				loadMyFile:function ($ocLazyLoad) {
 					return $ocLazyLoad.load({
 						name:'sbAdminApp',
-						files:['scripts/controllers/upcoming-movies.js']
+						files:['scripts/services/apiKey.js',
+							'scripts/services/callAPIs.js',
+							'scripts/controllers/upcoming-movies.js']
 					})
 				}
 			}

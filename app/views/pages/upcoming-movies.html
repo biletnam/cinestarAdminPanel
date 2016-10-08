@@ -22,8 +22,13 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-film"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="movieName"
-                                           placeholder="Movie Name (Type to search)" required="">
+                                    <input  list="movieName" ng-change="showMovieSuggestions(typedMovie)" ng-model="typedMovie" class="form-control" name="browser">
+                                    <datalist id="movieName" >
+                                        <option ng-repeat="movie  in searchedMovie track by $index ">{{movie}}</option>
+                                    </datalist>
+                                    <!--<input type="text" class="form-control" id="movieName" bs3-typeahead bs3-source="searchedMovie" ng-model="typedMovie"-->
+                                           <!--placeholder="Movie Name (Type to search)" ng-change="showMovieSuggestions(typedMovie)" required="">-->
+
                                 </div>
                             </div>
                         </div>

@@ -152,4 +152,24 @@ angular.module('sbAdminApp')
 				});
 			}
 		}
+	})
+	.factory('admin_upcoming_movies', function ($q, $http, apiKey) {
+		return{
+			getAdminUpcomingMovies: function(movieName){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/search-upcoming-movies/"+movieName).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			updateAdminUpcomingMovies: function (data) {
+				return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/", data).
+				success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
+		}
 	});
