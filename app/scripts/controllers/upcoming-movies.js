@@ -53,7 +53,7 @@ angular.module('sbAdminApp')
 		  console.log("qwerty",$scope.addedMoviesList[index]);
 	  };
 
-	  $scope.uploadFile = function(files) {
+	  $scope.uploadFile = function uploadFile(files) {
 		  var fd = new FormData();
 		  console.log(files);
 		  //Take the first selected file

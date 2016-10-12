@@ -11,10 +11,34 @@
  */
 angular.module('sbAdminApp')
 	.controller('currentMoviesController', function($scope,$position) {
+		$scope.commercialBreak=["5","10","15","20","25"];
+		$scope.cleanBreak=["5","10","15","20","25"];
 		$scope.actions=["Add","remove"];
 		$scope.screens=["Screen_1","Screen_2","Screen_3","Screen_4"];
 		$scope.dataScreens = [];
+		$scope.years = [];
+		$scope.years.push(new Date().getFullYear());
+		$scope.months=[];
+		$scope.showtimeType = "";
+		for(var i=1;i<=12;i++){
+			$scope.months.push(i);
+		}
+		$scope.startTime="";
+		$scope.st = function st(data){
+			$scope.startTime =  data;
+			console.log($scope.startTime);
+			$scope.addMoviesToScreen();
+		};
+		$scope.showtimeDate="";
+		$scope.sd = function rr(date){
+			$scope.showtimeDate=date;
+		};
+		$scope.endTime = "";
 
+		$scope.addMoviesToScreen = function addMoviesToScreen() {
+			var cal = $scope.startTime.split(':');
+			console.log(cal,$scope.showtimeType);
+		};
 		$scope.organiseScreens = [{
 			screenName:"Screen 1",
 			details:[{
@@ -84,4 +108,5 @@ angular.module('sbAdminApp')
 		// 	}
 		// }
 		// ];
+
 	});

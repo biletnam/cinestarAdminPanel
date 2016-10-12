@@ -142,9 +142,10 @@
                                             <div class="center-block">
                                                 <center>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button class="fileUpload btn btn-primary">
-                                                        <span>Upload</span>
-                                                        <input type="file" class="upload" onchange="angular.element(this).scope().uploadFile(this.files)" /></button>
+                                                    <!--<button class="fileUpload btn btn-primary">-->
+                                                        <!--<span>Upload</span>-->
+                                                        <!--<input type="file" class="upload" ng-model="fileName" ng-change="angular.element(this).scope().uploadFile(this.file)" />-->
+                                                    <!--</button>-->
                                                 </center>
                                             </div>
                                             <!-- /.modal-dialog -->
@@ -152,8 +153,8 @@
 
                                     </td>
                                     <td class="col-md-3">
-                                        <button type="button"  ng-click="clickedMovie($index)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                                        <button type="button"  ng-click="clickedMovie($index)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">View Image</button>
+                                        <!--<button type="button" class="btn btn-danger btn-sm">Remove</button>-->
                                     </td>
                                 </tr>
                                 </tbody>

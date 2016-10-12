@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="movieLength">Length</label>
+                            <label class="control-label col-sm-3" for="movieLength">Movie Duration</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -37,6 +37,51 @@
                                     <input type="text" class="form-control" id="movieLength"
                                            placeholder="Displayed automatically"
                                            required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="showtimeType">In Theatres</label>
+                            <div class="col-sm-9">
+                                <div class="input-group" id="movieInTheatres">
+                                   <span class="input-group-addon">
+                                        <i class="fa fa-file-movie-o"></i>
+                                    </span>
+                                    <input type="text" class="form-control"
+                                           placeholder="Displayed automatically"
+                                           required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="showtimeDate">Showtime Date</label>
+                            <div class="col-sm-9">
+                                <div class="input-group" id="showtimeDate">
+                                        <input type="date" ng-change="sd(showtimeDate)" ng-model="showtimeDate" name="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="startTime">Start Time</label>
+                            <div class="col-sm-9">
+                                <div class="input-group" id="startTime">
+                                    <div>
+                                        <input type="time" ng-change="st(startTime)" ng-model="startTime" name="startTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="showtimeType">Movie View</label>
+                            <div class="col-sm-9">
+                                <div class="input-group" id="showtimeType">
+                                   <span class="input-group-addon">
+                                        <i class="fa fa-ticket"></i>
+                                    </span>
+                                    <select class="form-control" title="Option Types" ng-model="showtimeType" >
+                                        <option>2D</option>
+                                        <option>3D</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +105,11 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="commercialBreak"
-                                           placeholder="In minutes" required="">
+                                    <select class="form-control" title="Option Types" id="commercialBreak" required="">
+                                        <option ng-repeat="commBreak in commercialBreak">{{commBreak}}</option>
+                                    </select>
+                                    <!--<input type="text" class="form-control" id="commercialBreak"-->
+                                           <!--placeholder="In minutes" required="">-->
                                 </div>
                             </div>
                         </div>
@@ -72,8 +120,11 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-clock-o" ></i>
                                     </span>
-                                    <input type="text" class="form-control" id="cleanTime"
-                                           placeholder="In minutes" required="">
+                                    <select class="form-control" title="Option Types" id="cleanTime" required="">
+                                        <option ng-repeat="clBreak in cleanBreak">{{clBreak}}</option>
+                                    </select>
+                                    <!--<input type="text" class="form-control" id="cleanTime"-->
+                                           <!--placeholder="In minutes" required="">-->
                                 </div>
                             </div>
                         </div>
