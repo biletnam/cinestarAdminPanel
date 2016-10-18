@@ -192,36 +192,61 @@ angular.module('sbAdminApp')
 	.factory('admin_current_movies', function ($q, $http, apiKey) {
 	return{
 		getCurrentMovies: function(){
-			return $http.get("" + apiKey.apiUrlFn() + "db/admin/added-upcoming-movies").
+			return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-current-movies").
 			success(function (data) {
 				return data;
 			}).error(function(data){
 				return data;
 			});
 		},
-		getQuickRecommendations: function(){
-			return $http.get("" + apiKey.apiUrlFn() + "db/admin/recommended-upcoming-movies").
+		getScreenForCurrentMovies: function (data) {
+			return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-screen-for-current-movies/"+data).
 			success(function (data) {
 				return data;
 			}).error(function(data){
 				return data;
 			});
 		},
-		getAdminUpcomingMovies: function(movieName){
-			return $http.get("" + apiKey.apiUrlFn() + "db/admin/search-upcoming-movies/"+movieName).
+		postMovieSchedule:function(data){
+			return $http.post(""+ apiKey.apiUrlFn() + "db/admin/post-movie-schedule",data).
 			success(function (data) {
 				return data;
 			}).error(function(data){
 				return data;
 			});
 		},
-		updateAdminUpcomingMovies: function (data) {
-			return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/"+data).
-			success(function(data){
+		getMovieSchedule:function(data){
+			return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-movie-schedule").
+			success(function (data) {
 				return data;
 			}).error(function(data){
 				return data;
 			});
 		}
+		//,
+		// getQuickRecommendations: function(){
+		// 	return $http.get("" + apiKey.apiUrlFn() + "db/admin/recommended-upcoming-movies").
+		// 	success(function (data) {
+		// 		return data;
+		// 	}).error(function(data){
+		// 		return data;
+		// 	});
+		// },
+		// getAdminUpcomingMovies: function(movieName){
+		// 	return $http.get("" + apiKey.apiUrlFn() + "db/admin/search-upcoming-movies/"+movieName).
+		// 	success(function (data) {
+		// 		return data;
+		// 	}).error(function(data){
+		// 		return data;
+		// 	});
+		// },
+		// updateAdminUpcomingMovies: function (data) {
+		// 	return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/"+data).
+		// 	success(function(data){
+		// 		return data;
+		// 	}).error(function(data){
+		// 		return data;
+		// 	});
+		// }
 	}
 });

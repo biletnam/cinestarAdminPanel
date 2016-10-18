@@ -22,8 +22,12 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-camera-retro"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="movieName"
-                                           placeholder="Movie Name (Type to search)" required="">
+                                    <select class="form-control" title="Option Types" ng-model="movieListName" ng-change="selectedMovie()" id="movieName"
+                                            ng-options="movieList.infoMovieName for movieList in movieList"
+                                            required="">
+                                    </select>
+                                    <!--<input type="text" class="form-control" id="movieName"-->
+                                           <!--placeholder="Movie Name (Type to search)" required="">-->
                                 </div>
                             </div>
                         </div>
@@ -35,7 +39,7 @@
                                         <i class="fa fa-film "></i>
                                     </span>
                                     <input type="text" class="form-control" id="movieLength"
-                                           placeholder="Displayed automatically"
+                                           placeholder="Displayed automatically" ng-model="movieDuration"
                                            required="" disabled>
                                 </div>
                             </div>
@@ -48,7 +52,7 @@
                                         <i class="fa fa-file-movie-o"></i>
                                     </span>
                                     <input type="text" class="form-control"
-                                           placeholder="Displayed automatically"
+                                           placeholder="Displayed automatically" ng-model="movieInTheatres"
                                            required="" disabled>
                                 </div>
                             </div>
@@ -78,7 +82,8 @@
                                    <span class="input-group-addon">
                                         <i class="fa fa-ticket"></i>
                                     </span>
-                                    <select class="form-control" title="Option Types" ng-model="showtimeType" >
+                                    <select class="form-control" title="Option Types" ng-model="showtimeType"
+                                            ng-change="getScreen(showtimeType)" >
                                         <option>2D</option>
                                         <option>3D</option>
                                     </select>
@@ -92,8 +97,9 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-video-camera"></i>
                                     </span>
-                                    <select class="form-control" title="Option Types" id="movieScreen">
-                                        <option>Select Screen</option>
+                                    <select class="form-control" title="Option Types" ng-model="selectedScreen" id="movieScreen"
+                                            ng-options="dataScreens.screenName for dataScreens in dataScreens">
+                                        <!--<option>Select Screen</option>-->
                                     </select>
                                 </div>
                             </div>
@@ -105,7 +111,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </span>
-                                    <select class="form-control" title="Option Types" id="commercialBreak" required="">
+                                    <select class="form-control" title="Option Types" ng-model="commBreak" id="commercialBreak" required="">
                                         <option ng-repeat="commBreak in commercialBreak">{{commBreak}}</option>
                                     </select>
                                     <!--<input type="text" class="form-control" id="commercialBreak"-->
@@ -120,7 +126,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-clock-o" ></i>
                                     </span>
-                                    <select class="form-control" title="Option Types" id="cleanTime" required="">
+                                    <select class="form-control" title="Option Types" ng-model="clnBreak" id="cleanTime" required="">
                                         <option ng-repeat="clBreak in cleanBreak">{{clBreak}}</option>
                                     </select>
                                     <!--<input type="text" class="form-control" id="cleanTime"-->
@@ -130,7 +136,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" ng-click="addMoviesToScreen()" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>

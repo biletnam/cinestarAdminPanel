@@ -117,7 +117,9 @@ angular
 			loadMyFile:function($ocLazyLoad) {
 				return $ocLazyLoad.load({
 					name:'sbAdminApp',
-					files:['scripts/controllers/currentMoviesController.js']
+					files:['scripts/services/apiKey.js',
+						'scripts/services/callAPIs.js',
+						'scripts/controllers/currentMoviesController.js']
 				})
 			}
 		}
