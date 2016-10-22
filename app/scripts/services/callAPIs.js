@@ -190,63 +190,81 @@ angular.module('sbAdminApp')
 		}
 	})
 	.factory('admin_current_movies', function ($q, $http, apiKey) {
-	return{
-		getCurrentMovies: function(){
-			return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-current-movies").
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
-		},
-		getScreenForCurrentMovies: function (data) {
-			return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-screen-for-current-movies/"+data).
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
-		},
-		postMovieSchedule:function(data){
-			return $http.post(""+ apiKey.apiUrlFn() + "db/admin/post-movie-schedule",data).
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
-		},
-		getMovieSchedule:function(data){
-			return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-movie-schedule").
-			success(function (data) {
-				return data;
-			}).error(function(data){
-				return data;
-			});
+		return{
+			getCurrentMovies: function(){
+				return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-current-movies").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			getScreenForCurrentMovies: function (data) {
+				return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-screen-for-current-movies/"+data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			postMovieSchedule:function(data){
+				return $http.post(""+ apiKey.apiUrlFn() + "db/admin/post-movie-schedule",data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			putMovieSchedule:function(data){
+				return $http.post(""+ apiKey.apiUrlFn() + "db/admin/post-movie-schedule",data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			getMovieSchedule:function(){
+				return $http.get(""+ apiKey.apiUrlFn() + "db/admin/get-movie-schedule").
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			deleteShowtime:function(data){
+				console.log(data);
+				return $http(
+					{
+						method: 'DELETE',
+						url: ""+ apiKey.apiUrlFn() + "db/admin/delete-movie-schedule",
+						data: data,
+						headers: {'Content-Type': 'application/json;charset=utf-8'}
+					}).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
 		}
-		//,
-		// getQuickRecommendations: function(){
-		// 	return $http.get("" + apiKey.apiUrlFn() + "db/admin/recommended-upcoming-movies").
-		// 	success(function (data) {
-		// 		return data;
-		// 	}).error(function(data){
-		// 		return data;
-		// 	});
-		// },
-		// getAdminUpcomingMovies: function(movieName){
-		// 	return $http.get("" + apiKey.apiUrlFn() + "db/admin/search-upcoming-movies/"+movieName).
-		// 	success(function (data) {
-		// 		return data;
-		// 	}).error(function(data){
-		// 		return data;
-		// 	});
-		// },
-		// updateAdminUpcomingMovies: function (data) {
-		// 	return $http.put(""+apiKey.apiUrlFn()+"db/admin/add-upcoming-movies/"+data).
-		// 	success(function(data){
-		// 		return data;
-		// 	}).error(function(data){
-		// 		return data;
-		// 	});
-		// }
-	}
-});
+	})
+	.factory('admin_login_register', function ($q, $http, apiKey) {
+		return{
+			postLogin:function(data){
+				return $http.post(""+ apiKey.apiUrlFn() + "db/admin/login-admin",data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
+			postRegistration:function(data){
+				return $http.post(""+ apiKey.apiUrlFn() + "db/admin/register-admin",data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}
+		}
+	});

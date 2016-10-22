@@ -12,7 +12,8 @@ angular
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+	  'ngCookies'
 
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
@@ -21,7 +22,7 @@ angular
       debug:false,
       events:true
     });
-    $urlRouterProvider.otherwise('/dashboard/home');
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
       .state('dashboard', {
@@ -107,8 +108,34 @@ angular
     })
       .state('login',{
         templateUrl:'views/pages/login.html',
-        url:'/login'
+        url:'/login',
+		controller:'loginController',
+		  resolve: {
+			  loadMyFile:function($ocLazyLoad) {
+				  return $ocLazyLoad.load({
+					  name:'sbAdminApp',
+					  files:['scripts/services/apiKey.js',
+						  'scripts/services/callAPIs.js',
+						  'scripts/controllers/loginController.js']
+				  })
+			  }
+		  }
     })
+		.state('register',{
+			templateUrl:'views/pages/register.html',
+			url:'/register',
+			controller:'registerController',
+			resolve: {
+				loadMyFile:function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						name:'sbAdminApp',
+						files:['scripts/services/apiKey.js',
+							'scripts/services/callAPIs.js',
+							'scripts/controllers/registerController.js']
+					})
+				}
+			}
+		})
 	    .state('dashboard.currentMovies',{
 		templateUrl:'views/pages/current-movies.html',
 		url:'/current-movies',
