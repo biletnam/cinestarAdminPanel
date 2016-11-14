@@ -102,12 +102,13 @@ module.exports = function (grunt) {
           }
         }
       },
-      dist: {
-        options: {
-          open: true,
-          base: '<%= yeoman.dist %>'
-        }
-      }
+		dist: {
+			options: {
+				open: true,
+				port: 9012,
+				base: '<%= yeoman.dist %>'
+			}
+		}
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes

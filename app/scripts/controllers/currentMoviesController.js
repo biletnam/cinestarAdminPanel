@@ -34,17 +34,19 @@ angular.module('sbAdminApp')
 		$scope.cleanBreak=["5","10","15","20","25"];
 		$scope.actions=["Add","remove"];
 		$scope.showtimeType = "";
-		$scope.startTime="";
+		$scope.startTime= null;
 		$scope.st = function st(data){
 			$scope.startTime =  data;
 		};
 		$scope.showtimeDate="";
 		$scope.sd = function rr(date){
-			$scope.showtimeDate=date;
+			$scope.showtimeDate= date;
 		};
 		$scope.endTime = 0;
 
 		$scope.addMoviesToScreen = function addMoviesToScreen() {
+			// $scope.startTime = $scope.startTime.getHours()+":"+$scope.startTime.getMinutes();
+			// console.log("Start Time ",$scope.startTime);
 			var cal = $scope.startTime.split(':');
 			// Calculation of End Time
 			if($scope.movieDuration!='N/A'){
@@ -70,6 +72,7 @@ angular.module('sbAdminApp')
 				"movieStartTime":$scope.startTime,
 				"movieEndTime":$scope.endTime
 			};
+			console.log("Posting data",data);
 			admin_current_movies.postMovieSchedule(data).then(function (response) {
 				console.log(response);
 				$scope.movieListName=null;
