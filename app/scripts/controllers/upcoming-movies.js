@@ -22,7 +22,6 @@ angular.module('sbAdminApp')
 	  $scope.quickMovieSuggestions = function quickMovieSuggestions(){
 		  admin_upcoming_movies.getQuickRecommendations().then(function(data){
 			  $scope.quickRecommendations = data.data;
-			  console.log($scope.quickRecommendations);
 		  });
 	  };
       $scope.quickMovieSuggestions();
