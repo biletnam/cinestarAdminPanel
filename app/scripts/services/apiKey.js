@@ -32,7 +32,7 @@ angular.module('sbAdminApp')
 					image = "http://127.0.0.5/";
 				}
 				else {
-					image = "http://cinex.press:8002/images/";
+					image = "http://cinex.press:8002/";
 				}
 				return image;
 			}
