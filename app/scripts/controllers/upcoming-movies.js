@@ -9,7 +9,9 @@
  */
 angular.module('sbAdminApp')
   .controller('UpcomingMoviesCtrl', function ($scope, $http, apiKey, $q, admin_upcoming_movies) {
-      $scope.typedMovie = "";
+	  $scope.imagePath = apiKey.imagePath();
+	  console.log(apiKey.imagePath());
+	  $scope.typedMovie = "";
 	  $scope.showMovieSuggestions = function showMovieSuggestions(movieName){
 		  admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function(data){
 			  $scope.searchedMovie = data.data;

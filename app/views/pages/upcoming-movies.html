@@ -126,7 +126,7 @@
                                     <td class="col-md-3 img-hover">
                                         <img
                                              alt="{{upMovie.upMovieName}}"
-                                             ng-src="{{upMovie.upPosterPath}}"
+                                             ng-src="{{imagePath}}{{upMovie.upPosterPath}}"
                                              ng-click="clickedMovie($index)"
                                              class="img-responsive img-rounded" style="width:30px;height:30px;">
                                         <!-- Modal -->
@@ -135,7 +135,7 @@
                                             <div class="modal-dialog">
                                                 <center>
                                                     <img alt="{{showClickedMovie.upMovieName}}"
-                                                         ng-src="{{showClickedMovie.upPosterPath}}"
+                                                         ng-src="{{imagePath}}{{showClickedMovie.upPosterPath}}"
                                                          class="img-responsive img-rounded" style="width: 250px;height: 380px;">
                                                 </center>
                                             </div>
