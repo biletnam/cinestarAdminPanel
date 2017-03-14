@@ -191,6 +191,14 @@ angular.module('sbAdminApp')
 	})
 	.factory('admin_current_movies', function ($q, $http, apiKey) {
 		return{
+			updateMovieInfo: function(data){
+				return $http.put("" + apiKey.apiUrlFn() + "db/admin/update-movie-info",data).
+				success(function (data) {
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			},
 			getCurrentMovies: function(){
 				return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-current-movies").
 				success(function (data) {

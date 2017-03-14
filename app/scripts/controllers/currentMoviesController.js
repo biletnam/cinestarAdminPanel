@@ -12,6 +12,10 @@
 angular.module('sbAdminApp')
 	.controller('currentMoviesController', function($scope,apiKey,admin_current_movies) {
 		$scope.movieListName="";
+		$scope.buyTicketButtonValue = false;
+		$scope.buyTicketButton = function buyTicketButton(response){
+			console.log(response);
+		};
 		admin_current_movies.getCurrentMovies().then(function(response){
 			$scope.movieList=response.data;
 		});
@@ -72,7 +76,14 @@ angular.module('sbAdminApp')
 				"movieStartTime":$scope.startTime,
 				"movieEndTime":$scope.endTime
 			};
-			console.log("Posting data",data);
+			console.log("Posting data",data, $scope.buyTicketButtonValue);
+			var d_data = {
+				"movieImdbID":$scope.movieListName.infoImdbID,
+				"buyTicketButtonValue":($scope.buyTicketButtonValue)?1:0
+			};
+			admin_current_movies.updateMovieInfo(d_data).then(function(response){
+				console.log("Buy Button Taken Care Of");
+			});
 			admin_current_movies.postMovieSchedule(data).then(function (response) {
 				console.log(response);
 				$scope.movieListName=null;
