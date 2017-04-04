@@ -16,8 +16,8 @@ angular
 	  'ngCookies'
 
   ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
-
+  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
     $ocLazyLoadProvider.config({
       debug:false,
       events:true
@@ -319,6 +319,17 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
-  }]);
+  }])
+  .run(function ($rootScope, $state) {
+  // $rootScope.$on('$routeChangeStart',
+  //   function (event, next, current) {
+  //     AuthService.getUserStatus()
+  //     .then(function(){
+  //       if (next.access.restricted && !AuthService.isLoggedIn()){
+  //         $location.path('/login');
+  //         $route.reload();
+  //       }
+  //     });
+  });;
 
     

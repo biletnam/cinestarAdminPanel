@@ -6,6 +6,7 @@
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
   "dependencies": {
+    "cors": "^2.8.1",
     "ng-flat-datepicker": "^0.1.4"
   },
   "devDependencies": {
