@@ -39,5 +39,13 @@
   },
   "engines": {
     "node": ">=0.10.0"
+<<<<<<< HEAD
+=======
+  },
+  "scripts": {
+    "test": "grunt test",
+    "start": "grunt serve",
+    "dist": "grunt serve:dist"
+>>>>>>> b1f7d99fff1e67f4476a4f17c750863ade0ef56a
   }
 }
