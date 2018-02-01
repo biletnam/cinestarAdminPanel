@@ -43,7 +43,6 @@
   "scripts": {
     "test": "grunt test",
     "start": "grunt serve",
-    "dist": "grunt serve:dist",
-    "postinstall": "bower install"
+    "dist": "grunt serve:dist"
   }
 }
