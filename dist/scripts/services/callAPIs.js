@@ -2,7 +2,7 @@
 angular.module("sbAdminApp").factory("admin_user", function ($q, $http, apiKey) {
     return {
         getAdminUser: function () {
-            return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-admin-user/"+localStorage.getItem("user_session").adminUserEmail).success(function (data) {
+            return $http.get("" + apiKey.apiUrlFn() + "db/admin/get-admin-user/"+JSON.parse(localStorage.getItem("user_session")).adminUserEmail).success(function (data) {
                 return data
             }).error(function (data) {
                 return data
