@@ -16,6 +16,7 @@ angular
         'ngCookies',
         'toastr'
 
+
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 

@@ -150,21 +150,22 @@ angular.module('sbAdminApp')
             }
         }
     })
-    .factory('admin_site_config', function ($q, $http, apiKey) {
+    .factory('admin_site_config', function ($q, $http, toastr) {
         return {
             getAdminSiteConfig: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/site-config").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/siteConfig"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminSiteConfig: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/site-config", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/siteConfig",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, false);
             }
         }
     })
