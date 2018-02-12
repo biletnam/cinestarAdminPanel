@@ -9,8 +9,8 @@
  */
 angular.module('sbAdminApp')
   .controller('ContactSettingsCtrl', function ($scope,apiKey, admin_contact_settings) {
-      admin_contact_settings.getAdminContact().then(function(data){
-          var result = data.data;
+      admin_contact_settings.getAdminContact().then(function(response){
+          var result = response.data.data;
           $scope.currentContact = {
 			  contactID:result.contactID,
               contactName:result.contactName,

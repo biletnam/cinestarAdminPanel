@@ -52,80 +52,84 @@ angular.module('sbAdminApp')
         }
 
     })
-    .factory('admin_contact_settings', function ($q, $http, apiKey) {
+    .factory('admin_contact_settings', function ($q, $http, toastr) {
         return {
             getAdminContact: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/contact-setting").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/contact"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminContact: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/contact-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/contact",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
 
     })
-    .factory('admin_location_settings', function ($q, $http, apiKey) {
+    .factory('admin_location_settings', function ($q, $http, toastr) {
         return {
             getAdminLocation: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/location-setting").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/location"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminLocation: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/location-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/location",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
-    .factory('admin_social_settings', function ($q, $http, apiKey) {
+    .factory('admin_social_settings', function ($q, $http, toastr) {
         return {
             getAdminSocial: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/social-setting").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/social"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminSocial: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/social-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/social",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
-    .factory('admin_ticket_settings', function ($q, $http, apiKey) {
+    .factory('admin_ticket_settings', function ($q, $http, toastr) {
         return {
             getAdminTicket: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/ticket-setting").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/ticket"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminTicket: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/ticket-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/ticket",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
-    .factory('admin_screen_settings', function ($q, $http, apiKey) {
+    .factory('admin_screen_settings', function ($q, $http, toastr) {
         return {
             postAdminScreen: function (data) {
                 return $http.post(config.apiUrl + "db/admin/setting/screen-setting", data).success(function (data) {
@@ -268,7 +272,7 @@ angular.module('sbAdminApp')
                     method: 'GET',
                     url: config.apiUrl + "/admin/logout"
                 };
-                return commonHTTPCall($http, req, toastr);
+                return commonHTTPCall($http, req, toastr, false);
             },
 
             postLogin: function (data) {
@@ -277,7 +281,7 @@ angular.module('sbAdminApp')
                     url: config.apiUrl + "/admin/login",
                     data: data
                 };
-                return commonHTTPCall($http, req, toastr);
+                return commonHTTPCall($http, req, toastr, false);
             },
             postRegistration: function (data) {
                 var req = {
