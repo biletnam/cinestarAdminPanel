@@ -132,25 +132,27 @@ angular.module('sbAdminApp')
     .factory('admin_screen_settings', function ($q, $http, toastr) {
         return {
             postAdminScreen: function (data) {
-                return $http.post(config.apiUrl + "db/admin/setting/screen-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'POST',
+                    url: config.apiUrl + "/admin/screen",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             },
             getAdminScreen: function () {
-                return $http.get(config.apiUrl + "db/admin/setting/screen-setting").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/screen"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminScreen: function (data) {
-                return $http.put(config.apiUrl + "db/admin/setting/screen-setting", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/screen",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
