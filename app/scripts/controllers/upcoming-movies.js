@@ -13,8 +13,8 @@ angular.module('sbAdminApp')
 	  console.log(apiKey.imagePath());
 	  $scope.typedMovie = "";
 	  $scope.showMovieSuggestions = function showMovieSuggestions(movieName){
-		  admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function(data){
-			  $scope.searchedMovie = data.data;
+		  admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function(response){
+			  $scope.searchedMovie = response.data.data;
 			  $scope.upReleaseDateMovie = $scope.searchedMovie;
 			  $scope.movieId = $scope.upReleaseDateMovie[0].upMovieId;
 			  console.log("search",$scope.searchedMovie,"typed", $scope.typedMovie,  $scope.upReleaseDateMovie[0].upReleaseDate);
@@ -22,8 +22,8 @@ angular.module('sbAdminApp')
 	  };
 
 	  $scope.quickMovieSuggestions = function quickMovieSuggestions(){
-		  admin_upcoming_movies.getQuickRecommendations().then(function(data){
-			  $scope.quickRecommendations = data.data;
+		  admin_upcoming_movies.getQuickRecommendations().then(function(response){
+			  $scope.quickRecommendations = response.data.data;
 		  });
 	  };
       $scope.quickMovieSuggestions();
@@ -42,9 +42,8 @@ angular.module('sbAdminApp')
 	  };
 
 	  $scope.addedMovies= function addedMovies(){
-		  console.log($scope.movieId);
-		  admin_upcoming_movies.getAddedMovies().then(function (data) {
-			  $scope.addedMoviesList = data.data;
+		  admin_upcoming_movies.getAddedMovies().then(function (response) {
+			  $scope.addedMoviesList = response.data.data;
 		  });
 	  };
 	  $scope.addedMovies();
@@ -69,47 +68,4 @@ angular.module('sbAdminApp')
 			  console.log("Error",data);
 		  });
 	  };
-
-
-	  $scope.upMovies = [{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"},{
-          movieName:"Shawshank",
-          releaseDate:"12-02-2015"}];
  });

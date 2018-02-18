@@ -18,12 +18,10 @@ angular.module('sbAdminApp')
 			$scope.data = {
 				"adminUserName": $scope.register.firstName+ " " +$scope.register.lastName,
 				"adminUserEmail": $scope.register.emailId,
-				"password":$scope.register.password,
-				"confirm_password":$scope.register.confirm_password
+				"adminPassword":$scope.register.password,
+				"adminConfirmPassword":$scope.register.confirm_password
 			};
 			admin_login_register.postRegistration($scope.data).then(function(resolve, reject){
-				console.log(resolve,resolve.data.Status);
-				console.log(reject);
 				if(resolve.data.Status!="Fail"){
 					// $rootScope.$broadcast('signinWithSignUp', $scope.data);
 					// $rootScope.signinWithSignUp = $scope.data;

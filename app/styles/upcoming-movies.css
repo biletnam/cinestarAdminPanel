@@ -1,3 +1,6 @@
+.action-button {
+    margin-right: 5px;
+}
 .qrScroll ::-webkit-scrollbar
 {
     width: 6px;

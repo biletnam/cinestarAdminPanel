@@ -17,12 +17,12 @@ angular.module('sbAdminApp')
 			console.log(response);
 		};
 		admin_current_movies.getCurrentMovies().then(function(response){
-			$scope.movieList=response.data;
+			$scope.movieList=response.data.data;
 		});
 		$scope.dataScreens="";
 		$scope.getScreen = function getScreen(data){
-			admin_current_movies.getScreenForCurrentMovies(data).then(function(data){
-				$scope.dataScreens = data.data;
+			admin_current_movies.getScreenForCurrentMovies(data).then(function(response){
+				$scope.dataScreens = response.data.data;
 			});
 		};
 		$scope.selectedScreen="";
@@ -77,15 +77,15 @@ angular.module('sbAdminApp')
 				"movieEndTime":$scope.endTime
 			};
 			console.log("Posting data",data, $scope.buyTicketButtonValue);
-			var d_data = {
-				"movieImdbID":$scope.movieListName.infoImdbID,
-				"buyTicketButtonValue":($scope.buyTicketButtonValue)?1:0
-			};
-			admin_current_movies.updateMovieInfo(d_data).then(function(response){
-				console.log("Buy Button Taken Care Of");
-			});
+			// Not required as of now 
+			// var d_data = {
+			// 	"movieImdbID":$scope.movieListName.infoImdbID,
+			// 	"buyTicketButtonValue":($scope.buyTicketButtonValue)?1:0
+			// };
+			// admin_current_movies.updateMovieInfo(d_data).then(function(response){
+			// 	console.log("Buy Button Taken Care Of");
+			// });
 			admin_current_movies.postMovieSchedule(data).then(function (response) {
-				console.log(response);
 				$scope.movieListName=null;
 				$scope.showtimeType=null;
 				$scope.selectedScreen=null;
@@ -137,11 +137,11 @@ angular.module('sbAdminApp')
 
 		$scope.getMoviesSchedules = function(){
 			admin_current_movies.getMovieSchedule().then(function(response){
-				$scope.showAdedMovies = response.data;
-				$scope.updateMovieShowtime = response.data;
+				$scope.showAdedMovies = response.data.data;
+				$scope.updateMovieShowtime = response.data.data;
 				$scope.organiseScreens = [];
 				var screens = [];
-				for(var i=0;i<response.data.length;i++){
+				for(var i=0;i<response.data.data.length;i++){
 					var temp = {
 						details:[]
 					};

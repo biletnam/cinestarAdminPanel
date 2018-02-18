@@ -175,39 +175,39 @@ angular.module('sbAdminApp')
             }
         }
     })
-    .factory('admin_upcoming_movies', function ($q, $http, apiKey) {
+    .factory('admin_upcoming_movies', function ($q, $http, toastr) {
         return {
             getAddedMovies: function () {
-                return $http.get(config.apiUrl + "db/admin/added-upcoming-movies").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/addedUpComingMovies"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             getQuickRecommendations: function () {
-                return $http.get(config.apiUrl + "db/admin/recommended-upcoming-movies").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/recommendedUpComingMovies"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             getAdminUpcomingMovies: function (movieName) {
-                return $http.get(config.apiUrl + "db/admin/search-upcoming-movies/" + movieName).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/searchUpComingMovies/" + movieName
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             updateAdminUpcomingMovies: function (data) {
-                return $http.put(config.apiUrl + "db/admin/add-upcoming-movies/" + data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'PUT',
+                    url: config.apiUrl + "/admin/addUpComingMovie/" + data
+                };
+                return commonHTTPCall($http, req, toastr, false);
             }
         }
     })
-    .factory('admin_current_movies', function ($q, $http, apiKey) {
+    .factory('admin_current_movies', function ($q, $http, toastr) {
         return {
             updateMovieInfo: function (data) {
                 return $http.put(config.apiUrl + "db/admin/update-movie-info", data).success(function (data) {
@@ -217,53 +217,50 @@ angular.module('sbAdminApp')
                 });
             },
             getCurrentMovies: function () {
-                return $http.get(config.apiUrl + "db/admin/get-current-movies").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/currentMovies"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             getScreenForCurrentMovies: function (data) {
-                return $http.get(config.apiUrl + "db/admin/get-screen-for-current-movies/" + data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/screens/" + data
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             postMovieSchedule: function (data) {
-                return $http.post(config.apiUrl + "db/admin/post-movie-schedule", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'POST',
+                    url: config.apiUrl + "/admin/movieSchedule",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             },
             putMovieSchedule: function (data) {
-                return $http.post(config.apiUrl + "db/admin/post-movie-schedule", data).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                method: 'PUT',
+                url: config.apiUrl + "/admin/movieSchedule",
+                data: data
+            };
+                return commonHTTPCall($http, req, toastr, true);
             },
             getMovieSchedule: function () {
-                return $http.get(config.apiUrl + "db/admin/get-movie-schedule").success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + "/admin/movieSchedule"
+                };
+                return commonHTTPCall($http, req, toastr, false);
             },
             deleteShowtime: function (data) {
-                console.log(data);
-                return $http(
-                    {
-                        method: 'DELETE',
-                        url: config.apiUrl + "db/admin/delete-movie-schedule",
-                        data: data,
-                        headers: {'Content-Type': 'application/json;charset=utf-8'}
-                    }).success(function (data) {
-                    return data;
-                }).error(function (data) {
-                    return data;
-                });
+                var req = {
+                    method: 'DELETE',
+                    url: config.apiUrl + "/admin/movieSchedule",
+                    data: data,
+                    headers: {'Content-Type': 'application/json;charset=utf-8'}
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
