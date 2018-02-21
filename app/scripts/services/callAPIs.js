@@ -177,6 +177,13 @@ angular.module('sbAdminApp')
     })
     .factory('admin_upcoming_movies', function ($q, $http, toastr) {
         return {
+            moveToCurrent: function (data) {
+                var req = {
+                    method: 'GET',
+                    url: config.apiUrl + '/admin/moveToCurrent/' + data
+                };
+                return commonHTTPCall($http, req, toastr, true);
+            },
             getAddedMovies: function () {
                 var req = {
                     method: 'GET',
@@ -204,6 +211,13 @@ angular.module('sbAdminApp')
                     url: config.apiUrl + "/admin/addUpComingMovie/" + data
                 };
                 return commonHTTPCall($http, req, toastr, false);
+            },
+            removeUpComingMovies: function (data) {
+                var req = {
+                    method: 'DELETE',
+                    url: config.apiUrl + "/admin/removeUpComingMovies/" + data
+                };
+                return commonHTTPCall($http, req, toastr, true);
             }
         }
     })
