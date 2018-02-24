@@ -15,8 +15,6 @@ angular
         'angular-loading-bar',
         'ngCookies',
         'toastr'
-
-
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 

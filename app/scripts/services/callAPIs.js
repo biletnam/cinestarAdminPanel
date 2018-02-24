@@ -260,6 +260,14 @@ angular.module('sbAdminApp')
             };
                 return commonHTTPCall($http, req, toastr, true);
             },
+            searchMovies:  function (data) {
+                var req = {
+                    method: 'POST',
+                    url: config.apiUrl + "/theMovieDB/movie/search",
+                    data: data
+                };
+                return commonHTTPCall($http, req, toastr, false);
+            },
             getMovieSchedule: function () {
                 var req = {
                     method: 'GET',

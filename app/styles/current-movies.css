@@ -56,3 +56,22 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+#movieSearchYear {
+    width: 70px;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.vertical-align {
+    vertical-align: middle !important;
+}
+
+.horizontal-align {
+    text-align: center !important;
+}
+
+.search-movie {
+    height: 561px !important;
+    overflow: scroll;
+}
