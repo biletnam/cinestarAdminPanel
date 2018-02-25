@@ -9,8 +9,7 @@
  */
 angular.module('sbAdminApp')
     .controller('UpcomingMoviesCtrl', function ($scope, $http, apiKey, $q, admin_upcoming_movies) {
-        $scope.imagePath = apiKey.imagePath();
-        console.log(apiKey.imagePath());
+        $scope.imagePath = config.imagePath;
         $scope.typedMovie = "";
         $scope.showMovieSuggestions = function showMovieSuggestions(movieName) {
             admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function (response) {
@@ -50,6 +49,9 @@ angular.module('sbAdminApp')
         $scope.addedMovies = function addedMovies() {
             admin_upcoming_movies.getAddedMovies().then(function (response) {
                 $scope.addedMoviesList = response.data.data;
+                for (var i=0;i<$scope.addedMoviesList;i++) {
+                    $scope.addedMoviesList[i].upPosterPath = $scope.addedMoviesList[i].upPosterPath.replace('images/upcoming/', '');
+                }
             });
         };
         $scope.addedMovies();
