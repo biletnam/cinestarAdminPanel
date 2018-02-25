@@ -50,7 +50,7 @@ angular.module('sbAdminApp')
             admin_upcoming_movies.getAddedMovies().then(function (response) {
                 $scope.addedMoviesList = response.data.data;
                 for (var i=0;i<$scope.addedMoviesList.length;i++) {
-                    $scope.addedMoviesList[i].upPosterPath = $scope.addedMoviesList[i].upPosterPath.replace('images/upcoming/', config.imageSize);
+                    $scope.addedMoviesList[i].upPosterPath = $scope.addedMoviesList[i].upPosterPath.replace('/images/upcoming/', config.imageSize);
                 }
             });
         };
