@@ -215,7 +215,7 @@ angular.module('sbAdminApp')
                     $scope.movieToBeSearched.name = null;
                 } else {
                     for (var i = 0; i < $scope.searchResults.results.length; i++) {
-                        $scope.searchResults.results[i].poster_path = config.imagePath + '/w154' + $scope.searchResults.results[i].poster_path;
+                        $scope.searchResults.results[i].poster_path = config.imagePath + config.imageSize + $scope.searchResults.results[i].poster_path;
                     }
                 }
             });
