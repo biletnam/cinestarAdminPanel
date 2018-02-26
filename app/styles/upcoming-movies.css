@@ -51,3 +51,15 @@
 {
     background-color: #5cb85c;
 }
+
+.vertical-align {
+    vertical-align: middle !important;
+}
+
+.horizontal-align {
+    text-align: center !important;
+}
+#movieNameSearch {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

@@ -11,18 +11,22 @@ angular.module('sbAdminApp')
     .controller('UpcomingMoviesCtrl', function ($scope, $http, apiKey, $q, admin_upcoming_movies) {
         $scope.imagePath = config.imagePath;
         $scope.typedMovie = "";
+        $scope.movieId = null;
+        $scope.selectedMovie = null;
         $scope.showMovieSuggestions = function showMovieSuggestions(movieName) {
-            admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function (response) {
+            return admin_upcoming_movies.getAdminUpcomingMovies(movieName).then(function (response) {
                 $scope.searchedMovie = response.data.data;
-                $scope.upReleaseDateMovie = $scope.searchedMovie;
-                $scope.movieId = $scope.upReleaseDateMovie[0].upMovieId;
-                console.log("search", $scope.searchedMovie, "typed", $scope.typedMovie, $scope.upReleaseDateMovie[0].upReleaseDate);
+                // $scope.movieId = $scope.searchedMovie[0].upMovieId;
+                return $scope.searchedMovie;
             });
         };
 
         $scope.quickMovieSuggestions = function quickMovieSuggestions() {
             admin_upcoming_movies.getQuickRecommendations().then(function (response) {
                 $scope.quickRecommendations = response.data.data;
+                for (var i=0;i<$scope.quickRecommendations.length;i++) {
+                    $scope.quickRecommendations[i].upPosterPath = $scope.quickRecommendations[i].upPosterPath.replace('/images/upcoming/', config.imageSize);
+                }
             });
         };
         $scope.quickMovieSuggestions();
