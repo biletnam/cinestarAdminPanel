@@ -97,7 +97,7 @@ angular.module('sbAdminApp')
                 $scope.startTime = null;
                 $scope.endTime = null;
                 admin_current_movies.getCurrentMovies().then(function (response) {
-                    $scope.movieList = response.data;
+                    $scope.movieList = response.data.data;
                     $scope.getMoviesSchedules();
                 });
             });

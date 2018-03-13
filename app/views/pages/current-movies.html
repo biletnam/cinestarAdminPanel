@@ -46,8 +46,13 @@
                                     <input type="text" class="form-control"
                                            id="movieLength"
                                            placeholder="Displayed automatically"
-                                           ng-model="movieDuration"
-                                           required="" ng-disabled="(movieDuration>0)">
+                                           ng-model="movieDuration" ng-if="movieDuration"
+                                           required="" ng-disabled="true">
+                                    <input type="text" class="form-control"
+                                           id="movieLength"
+                                           placeholder="Displayed automatically"
+                                           ng-model="movieDuration" ng-if="movieDuration==0"
+                                           required="" ng-disabled="false">
                                 </div>
                             </div>
                         </div>
