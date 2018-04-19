@@ -22,7 +22,7 @@ angular.module('sbAdminApp')
 				}
 				else {
 					// apiUrl = "http://cinestar.affpc.com:8080/api/";
-					apiUrl = "http://18.218.55.255:8000/api/";
+					apiUrl = config.baseUrl;//"http://18.218.55.255:8000/api/";
 				}
 				return apiUrl;
 			},
@@ -32,7 +32,7 @@ angular.module('sbAdminApp')
 					image = "http://127.0.0.5/";
 				}
 				else {
-					image = "http://18.218.55.255:8000/";
+					image = config.baseUrl;//"http://18.218.55.255:8000/";
 				}
 				return image;
 			}
