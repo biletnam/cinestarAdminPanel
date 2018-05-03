@@ -1,4 +1,14 @@
 <style type="text/css">
+    #movieSearchYear {
+        width: 70px;
+        border-top-left-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+    }
+
+    .search-movie {
+        height: 561px !important;
+        overflow: scroll;
+    }
     .fileUpload {
         position: relative;
         overflow: hidden;
@@ -25,127 +35,194 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-6 col-md-6 add-upcoming-movies-search">
-            <div class="panel panel-primary">
+        <!--<div class="col-lg-6 col-md-6 add-upcoming-movies-search">-->
+            <!--<div class="panel panel-primary">-->
+                <!--<div class="panel-heading">-->
+                    <!--Add Upcoming Movies To Site-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                <!--<div class="panel-body">-->
+                    <!--<form class="form-horizontal" role="form">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label col-sm-3"-->
+                                   <!--for="movieNameSearch">Movie-->
+                                <!--Name</label>-->
+                            <!--<div class="col-sm-9">-->
+                                <!--<div class="input-group">-->
+                                    <!--<span class="input-group-addon">-->
+                                        <!--<i class="fa fa-film"></i>-->
+                                    <!--</span>-->
+                                    <!--<input type="text" ng-model="typedMovie"-->
+                                           <!--id="movieNameSearch"-->
+                                           <!--placeholder="Search movie"-->
+                                           <!--typeahead="movie.upMovieName for movie in showMovieSuggestions($viewValue)"-->
+                                           <!--typeahead-loading="loadingMovies"-->
+                                           <!--typeahead-no-results="noResults"-->
+                                           <!--typeahead-on-select="movieId=$item.upMovieId; selectedMovie=$item"-->
+                                           <!--class="form-control">-->
+                                    <!--<i ng-show="loadingMovies"-->
+                                       <!--class="glyphicon glyphicon-refresh"></i>-->
+                                    <!--<div ng-show="noResults">-->
+                                        <!--<i class="glyphicon glyphicon-remove"></i> No-->
+                                        <!--Results Found-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label col-sm-3" for="movieLength">Release-->
+                                <!--Date </label>-->
+                            <!--<div class="col-sm-9">-->
+                                <!--<div class="input-group">-->
+                                    <!--<span class="input-group-addon">-->
+                                        <!--<i class="fa fa-calendar"></i>-->
+                                    <!--</span>-->
+                                    <!--<input type="text" class="form-control"-->
+                                           <!--id="movieLength"-->
+                                           <!--placeholder="Displayed automatically"-->
+                                           <!--ng-model="selectedMovie.upReleaseDate"-->
+                                           <!--required="" disabled>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-offset-3 col-sm-9">-->
+                                <!--<button type="submit" ng-click="updateMovie()"-->
+                                        <!--class="btn btn-primary">Submit-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.panel &ndash;&gt;-->
+            <!--<div class="panel panel-yellow recommended-upcoming-movies">-->
+                <!--<div class="panel-heading">-->
+                    <!--Quick Recommendations-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                <!--<div class="panel-body panel-height">-->
+                    <!--<div class="table-responsive">-->
+                        <!--<table class="table table-hover table-fixed qrScroll ">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th class="col-md-8">Details</th>-->
+                                <!--<th class="col-md-4 horizontal-align"-->
+                                    <!--style="padding-left: 0;">Poster-->
+                                <!--</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr ng-repeat="upMovie in quickRecommendations">-->
+                                <!--<td class="col-md-8">-->
+                                    <!--<div>-->
+                                        <!--<p><b>Name: </b>{{upMovie.upMovieName}}</p>-->
+                                        <!--<p><b>Release Date: </b>{{upMovie.upReleaseDate}}-->
+                                        <!--</p>-->
+                                        <!--<p>-->
+                                            <!--<button type="button"-->
+                                                    <!--class="btn btn-success btn-sm"-->
+                                                    <!--ng-click="updatedMovie(upMovie.upMovieId)"-->
+                                                    <!--tooltip="Add to Upcoming"-->
+                                                    <!--tooltip-placement="bottom">-->
+                                                <!--<i class="fa fa-plus-circle fa-2"-->
+                                                   <!--aria-hidden="true"></i>-->
+                                            <!--</button>-->
+                                            <!--&lt;!&ndash;TODO after the backend is implemented&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<button type="button"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;class="btn btn-danger btn-sm"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;tooltip="Remove from Recommended List"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;tooltip-placement="bottom"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;ng-click="removeUpComingMovies(upMovie.upMovieId)">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<i class="fa fa-minus-circle fa-2"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;aria-hidden="true"></i>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</td>-->
+                                <!--<td class="col-md-4 horizontal-align">-->
+                                    <!--<img alt="N/A"-->
+                                         <!--ng-src="{{imagePath}}{{upMovie.upPosterPath}}"-->
+                                         <!--class="img-rounded"-->
+                                         <!--style="width: 60px;height: 75px;">-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; /.table-responsive &ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--/.col-lg-6-->
+        <div class="col-lg-6">
+            <div class="panel panel-yellow search-movie" >
                 <div class="panel-heading">
-                    Add Upcoming Movies To Site
+                    Search Movies
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="control-label col-sm-3"
-                                   for="movieNameSearch">Movie
-                                Name</label>
-                            <div class="col-sm-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-film"></i>
-                                    </span>
-                                    <input type="text" ng-model="typedMovie"
-                                           id="movieNameSearch"
-                                           placeholder="Search movie"
-                                           typeahead="movie.upMovieName for movie in showMovieSuggestions($viewValue)"
-                                           typeahead-loading="loadingMovies"
-                                           typeahead-no-results="noResults"
-                                           typeahead-on-select="movieId=$item.upMovieId; selectedMovie=$item"
-                                           class="form-control">
-                                    <i ng-show="loadingMovies"
-                                       class="glyphicon glyphicon-refresh"></i>
-                                    <div ng-show="noResults">
-                                        <i class="glyphicon glyphicon-remove"></i> No
-                                        Results Found
-                                    </div>
-                                </div>
+                    <form class="form-horizontal" name="searchMovies">
+                        <label>Movie Name & Release Year</label>
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
+                                <input class="form-control" id="movieSearchYear"
+                                       type="number" min="2000" placeholder="Year"
+                                       ng-model="movieToBeSearched.year">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="movieLength">Release
-                                Date </label>
-                            <div class="col-sm-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </span>
-                                    <input type="text" class="form-control"
-                                           id="movieLength"
-                                           placeholder="Displayed automatically"
-                                           ng-model="selectedMovie.upReleaseDate"
-                                           required="" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" ng-click="updateMovie()"
-                                        class="btn btn-primary">Submit
+                            <input type="text" class="form-control"
+                                   ng-model="movieToBeSearched.name"
+                                   placeholder="Search term...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"
+                                        ng-click="searchMovie()">
+                                    <span class="glyphicon glyphicon-search"></span>
                                 </button>
-                            </div>
+                            </span>
                         </div>
                     </form>
+                    <!--Display the movies found-->
+                    <div ng-if="searchResults.results.length > 0">
+                        <table class="table table-responsive" align="center">
+                            <caption>Search Results</caption>
+                            <tr>
+                                <th>Details</th>
+                                <th class="horizontal-align">Poster</th>
+                            </tr>
+                            <tr ng-repeat="result in searchResults.results">
+                                <td class="vertical-align">
+                                    <p><b>Title</b>: {{result.original_title}}</p>
+                                    <p><b>Ori. Lang</b>: {{result.original_language}}</p>
+                                    <p><b>Poularity</b>: {{result.popularity}}</p>
+                                    <p><b>Vote Average</b>: {{result.vote_average}}</p>
+                                    <p><b>Vote Count</b>: {{result.vote_count}}</p>
+                                    <p><b>Release Date</b>: {{result.release_date}}</p>
+                                    <p>
+                                        <button type="button"
+                                                class="btn btn-success btn-circle"
+                                                tooltip="Click to add to Upcoming"
+                                                tooltip-placement="right"
+                                                ng-click="updateMovie(result)">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </p>
+                                </td>
+                                <td class="horizontal-align">
+                                    <img ng-src="{{result.poster_path}}">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--End display the movies found-->
                 </div>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-            <div class="panel panel-yellow recommended-upcoming-movies">
-                <div class="panel-heading">
-                    Quick Recommendations
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body panel-height">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-fixed qrScroll ">
-                            <thead>
-                            <tr>
-                                <th class="col-md-8">Details</th>
-                                <th class="col-md-4 horizontal-align"
-                                    style="padding-left: 0;">Poster
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="upMovie in quickRecommendations">
-                                <td class="col-md-8">
-                                    <div>
-                                        <p><b>Name: </b>{{upMovie.upMovieName}}</p>
-                                        <p><b>Release Date: </b>{{upMovie.upReleaseDate}}
-                                        </p>
-                                        <p>
-                                            <button type="button"
-                                                    class="btn btn-success btn-sm"
-                                                    ng-click="updatedMovie(upMovie.upMovieId)"
-                                                    tooltip="Add to Upcoming"
-                                                    tooltip-placement="bottom">
-                                                <i class="fa fa-plus-circle fa-2"
-                                                   aria-hidden="true"></i>
-                                            </button>
-                                            <!--TODO after the backend is implemented-->
-                                            <!--<button type="button"-->
-                                                    <!--class="btn btn-danger btn-sm"-->
-                                                    <!--tooltip="Remove from Recommended List"-->
-                                                    <!--tooltip-placement="bottom"-->
-                                                    <!--ng-click="removeUpComingMovies(upMovie.upMovieId)">-->
-                                                <!--<i class="fa fa-minus-circle fa-2"-->
-                                                   <!--aria-hidden="true"></i>-->
-                                            <!--</button>-->
-                                        </p>
-                                    </div>
-                                </td>
-                                <td class="col-md-4 horizontal-align">
-                                    <img alt="N/A"
-                                         ng-src="{{imagePath}}{{upMovie.upPosterPath}}"
-                                         class="img-rounded"
-                                         style="width: 60px;height: 75px;">
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <!-- /.panel-body -->
-            </div>
         </div>
+        <!-- /.col-lg-6 -->
 
         <div class="col-lg-6 added-upcoming-movies">
             <div class="panel panel-green">
@@ -177,17 +254,17 @@
                                         <p><b>Release Date: </b>{{upMovie.upReleaseDate}}
                                         </p>
                                         <p>
-                                            <button type="button"
-                                                    class="btn btn-success btn-circle"
-                                                    tooltip="Move to Current"
-                                                    tooltip-placement="bottom"
-                                                    ng-click="movieToCurrent(upMovie.upMovieId)">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
+                                            <!--<button type="button"-->
+                                                    <!--class="btn btn-success btn-circle"-->
+                                                    <!--tooltip="Move to Current"-->
+                                                    <!--tooltip-placement="bottom"-->
+                                                    <!--ng-click="updateMovie(upMovie.upMovieId)">-->
+                                                <!--<i class="fa fa-plus"></i>-->
+                                            <!--</button>-->
                                             <button type="button"
                                                     class="btn btn-danger btn-circle"
-                                                    tooltip="Remove from Current"
-                                                    tooltip-placement="bottom"
+                                                    tooltip="Remove from Upcoming"
+                                                    tooltip-placement="right"
                                                     ng-click="removeUpComingMovies(upMovie.upMovieId)">
                                                 <i class="fa fa-close"></i>
                                             </button>
@@ -196,7 +273,7 @@
                                 </td>
                                 <td class="col-md-4 horizontal-align">
                                     <img alt="N/A"
-                                         ng-src="{{imagePath}}{{upMovie.upPosterPath}}"
+                                         ng-src="{{upMovie.upPosterPath}}"
                                          class="img-rounded"
                                          style="width: 120px;height: 150px;">
                                 </td>

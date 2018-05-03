@@ -8,7 +8,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-    .controller('UpcomingMoviesCtrl', function ($scope, $http, apiKey, $q, admin_upcoming_movies) {
+    .controller('UpcomingMoviesCtrl', function ($scope, $http, apiKey, $q, admin_upcoming_movies, admin_current_movies) {
         $scope.imagePath = config.imagePath;
         $scope.typedMovie = "";
         $scope.movieId = null;
@@ -30,19 +30,26 @@ angular.module('sbAdminApp')
             });
         };
         $scope.quickMovieSuggestions();
-        $scope.updateMovie = function updateMovie() {
-            // console.log($scope.movieId);
-            admin_upcoming_movies.updateAdminUpcomingMovies($scope.movieId).then(function (data) {
+        $scope.updateMovie = function updateMovie(data) {
+            var postParams = {
+                movieID : data.id,
+                movieName : data.title,
+                movieReleaseDate : data.release_date,
+                moviePoster: data.poster_path
+            };
+
+            admin_upcoming_movies.addAdminUpcomingMovies(postParams).then(function () {
                 $scope.addedMovies();
             });
         };
 
-        $scope.updatedMovie = function updateMovie(data) {
-            admin_upcoming_movies.updateAdminUpcomingMovies(data).then(function (data) {
-                $scope.addedMovies();
-                $scope.quickMovieSuggestions();
-            });
-        };
+        // $scope.updatedMovie = function updateMovie(data) {
+        //     console.log(data);
+        //     admin_upcoming_movies.updateAdminUpcomingMovies(data).then(function (data) {
+        //         $scope.addedMovies();
+        //         $scope.quickMovieSuggestions();
+        //     });
+        // };
 
         $scope.removeUpComingMovies = function (movieID) {
             admin_upcoming_movies.removeUpComingMovies(movieID).then(function () {
@@ -65,25 +72,36 @@ angular.module('sbAdminApp')
             console.log("qwerty", $scope.addedMoviesList[index]);
         };
 
-        $scope.movieToCurrent = function (movieID) {
+        $scope.addToCurrent = function (movieID) {
 	  		admin_upcoming_movies.moveToCurrent(movieID).then(function () {
                 $scope.removeUpComingMovies(movieID);
             });
         };
 
-        $scope.uploadFile = function uploadFile(files) {
-            var fd = new FormData();
-            console.log(files);
-            //Take the first selected file
-            fd.append("file", files[0]);
-            $http.post("/images", fd, {
-                withCredentials: true,
-                headers: {'Content-Type': 'image/jpeg'},
-                transformRequest: angular.identity
-            }).success(function (data) {
-                console.log("Success", data);
-            }).error(function (data) {
-                console.log("Error", data);
+        $scope.movieToBeSearched = {
+            name: null,
+            year: parseInt(moment().format('YYYY'))
+        };
+        $scope.searchResults = null;
+        $scope.searchMovie = function () {
+            var postData = {
+                query: $scope.movieToBeSearched.name,
+                year: $scope.movieToBeSearched.year
+            };
+            if (!postData.query) {
+                toastr.error("Query can't be empty");
+                return;
+            }
+            admin_current_movies.searchMovies(postData).then(function (response) {
+                $scope.searchResults = response.data.data;
+                if ($scope.searchResults.results.length < 1) {
+                    toastr.info("Movie not found!");
+                    $scope.movieToBeSearched.name = null;
+                } else {
+                    for (var i = 0; i < $scope.searchResults.results.length; i++) {
+                        $scope.searchResults.results[i].poster_path = config.imagePath + config.imageSize + $scope.searchResults.results[i].poster_path;
+                    }
+                }
             });
         };
     });

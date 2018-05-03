@@ -205,10 +205,11 @@ angular.module('sbAdminApp')
                 };
                 return commonHTTPCall($http, req, toastr, false);
             },
-            updateAdminUpcomingMovies: function (data) {
+            addAdminUpcomingMovies: function (data) {
                 var req = {
-                    method: 'PUT',
-                    url: config.apiUrl + "/admin/addUpComingMovie/" + data
+                    method: 'POST',
+                    url: config.apiUrl + "/admin/addUpComingMovie/" + data.movieID,
+                    data: data
                 };
                 return commonHTTPCall($http, req, toastr, false);
             },

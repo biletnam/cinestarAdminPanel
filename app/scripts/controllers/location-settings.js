@@ -38,4 +38,20 @@ angular.module('sbAdminApp')
                 initializeLocationDetails();
             });
         }
+
+        $scope.uploadFile = function uploadFile(files) {
+            var fd = new FormData();
+            console.log(files);
+            //Take the first selected file
+            fd.append("file", files[0]);
+            $http.post("/images", fd, {
+                withCredentials: true,
+                headers: {'Content-Type': 'image/jpeg'},
+                transformRequest: angular.identity
+            }).success(function (data) {
+                console.log("Success", data);
+            }).error(function (data) {
+                console.log("Error", data);
+            });
+        };
     });
