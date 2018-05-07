@@ -172,7 +172,8 @@ angular.module('sbAdminApp')
                                     startTime: $scope.showAdedMovies[i].movieStartTime,
                                     endTime: $scope.showAdedMovies[i].movieEndTime,
                                     type: $scope.showAdedMovies[i].movieType,
-                                    movieShowDate: $scope.showAdedMovies[i].movieShowDate
+                                    movieShowDate: $scope.showAdedMovies[i].movieShowDate,
+                                    scheduleID: $scope.showAdedMovies[i].scheduleID
                                 });
                             }
                         }
