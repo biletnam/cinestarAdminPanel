@@ -276,12 +276,10 @@ angular.module('sbAdminApp')
                 };
                 return commonHTTPCall($http, req, toastr, false);
             },
-            deleteShowtime: function (data) {
+            deleteShowtime: function (scheduleID) {
                 var req = {
                     method: 'DELETE',
-                    url: config.apiUrl + "/admin/movieSchedule",
-                    data: data,
-                    headers: {'Content-Type': 'application/json;charset=utf-8'}
+                    url: config.apiUrl + "/admin/movieSchedule/" + scheduleID
                 };
                 return commonHTTPCall($http, req, toastr, true);
             }

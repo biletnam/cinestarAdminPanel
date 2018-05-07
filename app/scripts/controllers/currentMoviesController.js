@@ -181,14 +181,7 @@ angular.module('sbAdminApp')
         };
 
         $scope.deleteMovieSchedule = function deleteMovieSchedule(data, data1) {
-            $scope.dataCondition = {
-                "movieScreen": data.screenName,
-                "movieEndTime": data1.endTime,
-                "movieShowDate": data1.movieShowDate,
-                "movieStartTime": data1.startTime,
-                "movieType": data1.type
-            };
-            admin_current_movies.deleteShowtime($scope.dataCondition).then(function (response) {
+            admin_current_movies.deleteShowtime(data1.scheduleID).then(function (response) {
                 $scope.getMoviesSchedules();
             });
         };
