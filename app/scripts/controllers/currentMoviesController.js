@@ -50,6 +50,10 @@ angular.module('sbAdminApp')
         $scope.sd = function rr(date) {
             $scope.showtimeDate = date;
         };
+        $scope.showtimeRepeatTillDate = null;
+        $scope.showTimeRepeat = function (date) {
+            $scope.showtimeRepeatTillDate = date;
+        };
         $scope.endTime = 0;
 
         $scope.addMoviesToScreen = function addMoviesToScreen() {
@@ -80,64 +84,30 @@ angular.module('sbAdminApp')
                 "movieStartTime": $scope.startTime,
                 "movieEndTime": $scope.endTime
             };
-            console.log("Posting data", data, $scope.buyTicketButtonValue);
-            // Not required as of now
-            // var d_data = {
-            // 	"movieImdbID":$scope.movieListName.infoImdbID,
-            // 	"buyTicketButtonValue":($scope.buyTicketButtonValue)?1:0
-            // };
-            // admin_current_movies.updateMovieInfo(d_data).then(function(response){
-            // 	console.log("Buy Button Taken Care Of");
-            // });
+
+            if ($scope.showtimeRepeatTillDate && $scope.showtimeRepeatTillDate !== '') {
+                data.movieShowDateRepeat = $scope.showtimeRepeatTillDate;
+            }
             admin_current_movies.postMovieSchedule(data).then(function (response) {
-                $scope.movieListName = null;
-                $scope.showtimeType = null;
-                $scope.selectedScreen = null;
-                $scope.showtimeDate = null;
-                $scope.startTime = null;
-                $scope.endTime = null;
                 admin_current_movies.getCurrentMovies().then(function (response) {
                     $scope.movieList = response.data.data;
                     $scope.getMoviesSchedules();
                 });
             });
         };
-        $scope.updateMoviesToScreen = function updateMoviesToScreen() {
-            console.log($scope.updateMovieShowtime);
-            // var cal = $scope.startTime.split(':');
-            // // Calculation of End Time
-            // if($scope.movieDuration!='N/A'){
-            // 	var quo = (parseInt(($scope.movieDuration.replace('min','')))+parseInt($scope.clnBreak)+parseInt($scope.commBreak))/60;
-            // 	var rem = (parseInt(($scope.movieDuration.replace('min','')))+parseInt($scope.clnBreak)+parseInt($scope.commBreak))%60;
-            // 	var endTimeHour = (Math.floor(parseInt(cal[0])+quo));
-            // 	var endTimeMinute = (Math.floor(parseInt(cal[1])+rem));
-            // 	if(endTimeMinute>60){
-            // 		endTimeHour = endTimeHour+Math.floor(endTimeMinute/60);
-            // 		endTimeMinute = endTimeMinute%60;
-            // 	}
-            // 	if(endTimeHour>24){
-            // 		endTimeHour = endTimeHour%24;
-            // 	}
-            // 	$scope.endTime = endTimeHour+":"+endTimeMinute;
-            // }
-            // // End Calculation
-            // var data = {
-            // 	"movieImdbID":$scope.movieListName.infoImdbID,
-            // 	"movieType":$scope.showtimeType,
-            // 	"movieScreen":$scope.selectedScreen.screenName,
-            // 	"movieShowDate":$scope.showtimeDate,
-            // 	"movieStartTime":$scope.startTime,
-            // 	"movieEndTime":$scope.endTime
-            // };
-            // admin_current_movies.putMovieSchedule(data).then(function (response) {
-            // 	// console.log(response);
-            // 	admin_current_movies.getCurrentMovies().then(function(response){
-            // 		$scope.movieList=response.data;
-            // 		$scope.getMoviesSchedules();
-            // 	});
-            // });
-        };
 
+        $scope.resetAddMoviesToScreenFields = function () {
+            $scope.movieListName = null;
+            $scope.showtimeType = null;
+            $scope.selectedScreen = null;
+            $scope.showtimeDate = null;
+            $scope.startTime = null;
+            $scope.endTime = null;
+            $scope.showtimeRepeatTillDate = null;
+            $scope.showtimeType = "";
+            $scope.commBreak = "";
+            $scope.clnBreak = "";
+        };
 
         $scope.getMoviesSchedules = function () {
             admin_current_movies.getMovieSchedule().then(function (response) {
